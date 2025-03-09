@@ -32,3 +32,13 @@ $icon-color: #858585;
   width: 1.5rem;
   height: 1.5rem;
 }
+
+/*Default link style*/
+@mixin link-style {
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #acacac;
+  }
+}

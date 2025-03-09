@@ -7,6 +7,10 @@ module.exports = {
         playfair: ['"Playfair Display"', "serif"],
         poppins: ["Poppins", "sans-serif"],
       },
+      colors: {
+        background: '#0a0a0a',
+        text: '#cfcfcf'
+      }
     },
   },
   plugins: [],

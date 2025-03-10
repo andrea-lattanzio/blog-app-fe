@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './navlinks.component.scss',
 })
 export class NavlinksComponent {
-  public constructor(private readonly router: Router) {}
+  private readonly router = inject(Router);
 
   public navigate(route: string): void {
     this.router.navigate([route]);

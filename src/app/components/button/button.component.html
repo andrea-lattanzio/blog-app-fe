@@ -1,0 +1,9 @@
+<button
+  class="button disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+  (click)="handleClick()"
+  [disabled]="inputs.disabled"
+  [ngClass]="inputs.styles"
+>
+  @if(inputs.icon) { <i [class]="inputs.icon"></i>} @if(inputs.text) {
+  {{ inputs.text }} }
+</button>

@@ -1,1 +1,38 @@
-<p>register works!</p>
+<!-- login.component.html -->
+<div class="flex items-center justify-center h-screen w-full">
+  <div class="p-8 w-96">
+    <h2
+      class="text-center text-2xl font-semibold font-playfair tracking-wide mb-6"
+    >
+      &lt; Create your Account! /&gt;
+    </h2>
+    <form>
+      <div class="mb-4">
+        <input id="name" type="text" class="input" placeholder="Name" />
+      </div>
+      <div class="mb-4">
+        <input id="lastname" type="text" class="input" placeholder="Lastname" />
+      </div>
+      <div class="mb-4">
+        <input
+          id="password"
+          type="password"
+          class="input mb-1"
+          placeholder="Password"
+        />
+      </div>
+      <app-button
+        [inputs]="buttonInputs"
+        (onClick)="handleRegister()"
+      ></app-button>
+    </form>
+    <div class="mt-4 text-center">
+      <p class="text-sm text-gray-500">
+        <span>Already have an account? </span>
+        <a (click)="navigate('login')" class="link font-semibold"
+          >Sign in here</a
+        >
+      </p>
+    </div>
+  </div>
+</div>

@@ -17,7 +17,17 @@ export class RegisterComponent {
     text: 'Sign up',
     styles: 'w-full font-semibold font-poppins',
   };
+  googleButtonInputs: ButtonInput = {
+    icon: 'bi bi-google',
+    text: 'Sign up with Google',
+    styles: 'font-semibold font-poppins',
+  }
+
   handleRegister(): void {}
+
+  handleGoogleLogin(): void {
+    
+  }
 
   navigate(route: string): void {
     this.router.navigate([route]);

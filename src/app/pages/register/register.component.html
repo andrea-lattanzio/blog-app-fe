@@ -26,13 +26,17 @@
         (onClick)="handleRegister()"
       ></app-button>
     </form>
-    <div class="mt-4 text-center">
-      <p class="text-sm text-gray-500">
+    <div class="mt-4 flex flex-col items-center">
+      <p class="text-sm text-gray-500 mb-4">
         <span>Already have an account? </span>
         <a (click)="navigate('login')" class="link font-semibold"
           >Sign in here</a
         >
       </p>
+      <app-button
+        [inputs]="googleButtonInputs"
+        (onClick)="handleGoogleLogin()"
+      ></app-button>
     </div>
   </div>
 </div>

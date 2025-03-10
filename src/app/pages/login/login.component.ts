@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     type: 'submit',
     icon: 'bi bi-box-arrow-in-right',
     text: 'Login',
-    styles: 'w-full font-semibold font-poppins',
+    styles: 'w-full font-semibold font-poppins mt-2',
   };
   googleButtonInputs: ButtonInput = {
     icon: 'bi bi-google',

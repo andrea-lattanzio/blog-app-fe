@@ -29,6 +29,30 @@ $button-bg: #0a0a0a;
   }
 }
 
+/*
+  Default button style
+*/
+$input-bg: #0a0a0a;
+@mixin input-style {
+  background-color: $input-bg;
+  color: #cdcdcd9a;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1rem;
+  transition: background-color 0.2s ease-in;
+  border: 1px solid #afafaf;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  padding: 1.5vh 2vh;
+
+  &::placeholder {
+    color: #cdcdcd4a;
+  }
+}
+
 /*Default icon style*/
 $icon-color: #858585;
 @mixin icon-style {

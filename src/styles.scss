@@ -45,6 +45,11 @@ body {
   @include button-style;
 }
 
+/* Style for buttons */
+.input {
+  @include input-style;
+}
+
 /* Style for icons */
 .icon {
   @include icon-style;

@@ -1,26 +1,69 @@
 <!-- login.component.html -->
 <div class="flex items-center justify-center h-screen w-full">
-  <div class="p-8 w-96">
+  <div class="p-8 w-80 lg:w-96 flex flex-col justify-center overflow-auto h-[80vh]">
     <h2
       class="text-center text-2xl font-semibold font-playfair tracking-wide mb-6"
     >
       &lt; Create your Account! /&gt;
     </h2>
-    <form>
-      <div class="mb-4">
-        <input id="name" type="text" class="input" placeholder="Name" />
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="handleRegister()"
+      id="form"
+      class="space-y-4"
+    >
+      <div>
+        <input
+          id="name"
+          type="text"
+          class="input"
+          placeholder="Name"
+          formControlName="name"
+        />
       </div>
-      <div class="mb-4">
-        <input id="lastname" type="text" class="input" placeholder="Lastname" />
+      @if(hasError('name')) {<app-form-error
+        [error]="getError('name')"
+      ></app-form-error
+      >}
+      <div>
+        <input
+          id="lastname"
+          type="text"
+          class="input"
+          placeholder="Lastname"
+          formControlName="lastname"
+        />
       </div>
-      <div class="mb-4">
+      @if(hasError('lastname')) {<app-form-error
+        [error]="getError('lastname')"
+      ></app-form-error
+      >}
+      <div>
+        <input
+          id="email"
+          type="email"
+          class="input"
+          placeholder="Email"
+          formControlName="email"
+        />
+      </div>
+      @if(hasError('email')) {<app-form-error
+        [error]="getError('email')"
+      ></app-form-error
+      >}
+      <div>
         <input
           id="password"
           type="password"
           class="input mb-1"
           placeholder="Password"
+          formControlName="password"
         />
       </div>
+      @if(hasError('password')) {<app-form-error
+        [error]="getError('password')"
+      ></app-form-error
+      >}
       <app-button
         [inputs]="buttonInputs"
         (onClick)="handleRegister()"
@@ -35,7 +78,7 @@
       </p>
       <app-button
         [inputs]="googleButtonInputs"
-        (onClick)="handleGoogleLogin()"
+        (onClick)="handleGoogleRegister()"
       ></app-button>
     </div>
   </div>

@@ -1,1 +1,38 @@
-<p>login works!</p>
+<!-- login.component.html -->
+<div class="flex items-center justify-center h-screen w-full">
+  <div class="p-8 w-96">
+    <h2
+      class="text-center text-2xl font-semibold font-playfair tracking-wide mb-6"
+    >
+      &lt; Log in to your Account! /&gt;
+    </h2>
+    <form>
+      <div class="mb-4">
+        <input id="username" type="text" class="input" placeholder="Username" />
+      </div>
+      <div class="mb-4">
+        <input
+          id="password"
+          type="password"
+          class="input mb-1"
+          placeholder="Password"
+        />
+        <div class="w-full flex justify-end text-xs underline text-gray-500">
+          <a href="">forgot your password?</a>
+        </div>
+      </div>
+      <app-button
+        [inputs]="buttonInputs"
+        (onClick)="handleLogin()"
+      ></app-button>
+    </form>
+    <div class="mt-4 text-center">
+      <p class="text-sm text-gray-500">
+        <span>Don't have an account? </span>
+        <a (click)="navigate('register')" class="link font-semibold"
+          >Sign up here</a
+        >
+      </p>
+    </div>
+  </div>
+</div>

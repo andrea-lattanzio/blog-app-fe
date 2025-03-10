@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, output, Output } from '@angular/core';
 
 export interface ButtonInput {
+  type?: "submit" | "reset"; 
   icon?: string;
   text?: string;
   disabled?: boolean;

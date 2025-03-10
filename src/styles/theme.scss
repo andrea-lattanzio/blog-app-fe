@@ -5,7 +5,7 @@ $first-layer-bg-color: #1d1d1d;
 $second-layer-bg-color: #343434;
 $primary-text-color: #f6f6f6;
 $secondary-text-color: #929292;
-$default-hover-bg-color: #232323af;
+$default-hover-bg-color: #23232380;
 $active-bg-color: #343434;
 
 /*
@@ -17,8 +17,12 @@ $button-bg: #0a0a0a;
   color: #cdcdcd;
   border-radius: 0.5rem;
   padding: 0.625rem 1rem;
-  transition: background-color 0.2s ease-in-out;
-  border: 2px solid #2b2b2b;
+  transition: background-color 0.2s ease-in;
+  border: 2px solid #676767;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
 
   &:hover {
     background-color: $default-hover-bg-color;

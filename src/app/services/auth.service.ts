@@ -2,7 +2,15 @@ import { inject, Injectable } from '@angular/core';
 import { JwtService } from './jwt.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, map, of, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  of,
+  tap,
+  throwError,
+} from 'rxjs';
 import { environment } from '../../environments/env';
 import {
   User,
@@ -30,7 +38,7 @@ export class AuthService {
     headers = headers.set('show-spinner', 'false');
 
     this.http
-      .get<User>(`${environment.uri}/profile}`, { headers })
+      .get<User>(`${environment.uri}/auth`, { headers })
       .pipe(
         catchError((_) => {
           this.jwtService.removeToken();
@@ -45,23 +53,22 @@ export class AuthService {
   public authenticate<T extends LoginRequestBody | RegisterRequestBody>(
     endpoint: 'login' | 'register',
     requestBody: T
-  ) {
-    this.http
-      .post<LoginResponseBody>(`${environment.uri}/${endpoint}}`, requestBody)
+  ): Observable<User> {
+    return this.http
+      .post<LoginResponseBody>(
+        `${environment.uri}/auth/${endpoint}`,
+        requestBody
+      )
       .pipe(
-        catchError((_) => {
-          this.jwtService.removeToken();
-          return of(null);
+        catchError((err) => {
+          //add alert service
+          return throwError(() => err);
         }),
-        tap((res: LoginResponseBody | null) => {
-          this.jwtService.setToken(res!.token);
+        tap((res: LoginResponseBody) => {
+          this.jwtService.setToken(res.token);
+          this._currentUser$.next(res.user);
         }),
-        tap((res: LoginResponseBody | null) => {
-          this._currentUser$.next(res!.user);
-        }),
-        map((res: LoginResponseBody | null) => {
-          res!.user;
-        })
+        map((res: LoginResponseBody) => res.user)
       );
   }
 

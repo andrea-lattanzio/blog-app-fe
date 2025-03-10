@@ -14,7 +14,8 @@ import {
 } from '@angular/forms';
 import { FormErrorComponent } from '../../components/form-error/form-error.component';
 import { CommonModule } from '@angular/common';
-import { debounceTime } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
+import { LoginRequestBody } from '../../services/interfaces/auth.service.interfaces';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly fb = inject(NonNullableFormBuilder);
   public loginForm!: FormGroup;
+  private readonly authService = inject(AuthService);
   loginButtonInputs: ButtonInput = {
     type: 'submit',
     icon: 'bi bi-box-arrow-in-right',
@@ -57,7 +59,11 @@ export class LoginComponent implements OnInit {
 
   handleLogin(): void {
     if (this.loginForm.invalid) return;
-    console.log('LoggedIn');
+    this.authService
+      .authenticate<LoginRequestBody>('login', { ...this.loginForm.value })
+      .subscribe(() => {
+        this.navigate('/');
+      });
   }
 
   handleGoogleLogin(): void {

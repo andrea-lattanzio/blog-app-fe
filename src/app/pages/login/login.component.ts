@@ -11,14 +11,23 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   private readonly router = inject(Router);
-  buttonInputs: ButtonInput = {
+  loginButtonInputs: ButtonInput = {
     type: 'submit',
     icon: 'bi bi-box-arrow-in-right',
     text: 'Login',
     styles: 'w-full font-semibold font-poppins',
   }
+  googleButtonInputs: ButtonInput = {
+    icon: 'bi bi-google',
+    text: 'Login with Google',
+    styles: 'font-semibold font-poppins',
+  }
 
   handleLogin(): void {
+    console.log('sas');
+  }
+
+  handleGoogleLogin(): void {
     console.log('sas');
   }
 

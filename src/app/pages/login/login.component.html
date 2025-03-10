@@ -1,26 +1,46 @@
 <!-- login.component.html -->
-<div class="flex items-center justify-center h-screen w-full">
+<div class="animated animate__fadeIn flex items-center justify-center h-screen w-full">
   <div class="p-8 w-96">
     <h2
       class="text-center text-2xl font-semibold font-playfair tracking-wide mb-6"
     >
       &lt; Log in to your Account! /&gt;
     </h2>
-    <form>
-      <div class="mb-4">
-        <input id="username" type="text" class="input" placeholder="Username" />
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="handleLogin()"
+      id="form"
+      class="space-y-4"
+    >
+      <div>
+        <input
+          id="email"
+          type="text"
+          class="input"
+          placeholder="Email"
+          formControlName="email"
+        />
       </div>
-      <div class="mb-4">
+      @if(hasError('email')) {<app-form-error
+        [error]="getError('email')"
+      ></app-form-error
+      >}
+      <div>
         <input
           id="password"
           type="password"
           class="input mb-1"
           placeholder="Password"
+          formControlName="password"
         />
         <div class="w-full flex justify-end text-xs underline text-gray-500">
           <a href="">forgot your password?</a>
         </div>
       </div>
+      @if(hasError('password')) {<app-form-error
+        [error]="getError('password')"
+      ></app-form-error
+      >}
       <app-button
         [inputs]="loginButtonInputs"
         (onClick)="handleLogin()"

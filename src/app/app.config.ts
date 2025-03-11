@@ -6,14 +6,19 @@ import {
 } from '@angular/router';
 
 import { routes } from './app.routes';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withPreloading(PreloadAllModules)),
     HttpClientModule,
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     BrowserModule,
   ],
 };

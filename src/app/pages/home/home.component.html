@@ -1,3 +1,35 @@
-<p class="font-playfair text-4xl">home component!</p>
-<button class="button">This is a button</button>
-<i class="icon bi bi-0-circle-fill text-2xl"></i>
+<div class="pt-10 pb-14 h-auto flex flex-col items-center justify-center">
+  <h1 class="text-5xl font-playfair font-semibold tracking-wide text-center">Hey, I'm Andrea.</h1>
+  <div class="mt-8 w-20 h-1 bg-gray-400 rounded-full mx-auto my-4"></div>
+  <div class="mt-5 w-52 h-52 rounded-full overflow-hidden shadow-xl">
+    <img src="./assets/images/profile_pic.jpeg" alt="Profile Picture" class="w-full h-full object-cover" />
+  </div>
+  <div class="mt-5 flex space-x-4 items-center text-2xl">
+    <a href=""><i class="icon bi bi-github"></i></a><a href=""><i class="icon bi bi-linkedin"></i></a>
+  </div>
+  <div class="mt-8 space-y-6 text-center text-xl font-playfair lg:w-96 w-full" style="font-weight: 300">
+    <p>
+      I'm a Junior Web Developer sharing my knowledge about software through articles, and my newsletter on this
+      personal blog.
+    </p>
+    <p>When I'm not coding i'm either lifting, or hiking ⛰️</p>
+  </div>
+  <h1 class="mt-12 text-3xl font-playfair font-semibold tracking-wide text-center">Recently Published</h1>
+  <div class="mt-5 w-20 h-1 bg-gray-400 rounded-full mx-auto my-4"></div>
+  <div class="mt-5 flex flex-col items-center space-y-2 lg:w-96 w-full">
+    <div class="px-4 py-6 h-20 w-full border-2 rounded-md border-gray-400">sas</div>
+    <div class="px-4 py-6 h-20 w-full border-2 rounded-md border-gray-400">sas</div>
+    <div class="px-4 py-6 h-20 w-full border-2 rounded-md border-gray-400">sas</div>
+  </div>
+  <div class="mt-12 w-full text-center">
+    <i class="bi bi-braces-asterisk icon text-7xl"></i>
+  </div>
+  <h1 class="mt-5 text-xl font-playfair font-semibold tracking-wide text-center">
+    Explore Software Development Trends with Me – Join My Newsletter!
+  </h1>
+  <form class="mt-8" [formGroup]="newsletterForm" (ngSubmit)="handleNewsletterSubscription()">
+    <input id="email" type="text" class="input" placeholder="Your email" formControlName="email" />
+    @if(hasError('email')) {<app-form-error [error]="getError('email')"></app-form-error>}
+  </form>
+  <app-button [inputs]="subscribeButtonInputs" (onClick)="handleNewsletterSubscription()"></app-button>
+</div>

@@ -12,6 +12,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { FormErrorComponent } from '../../components/form-error/form-error.component';
+import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ import { FormErrorComponent } from '../../components/form-error/form-error.compo
     FormsModule,
     ReactiveFormsModule,
     FormErrorComponent,
+    ArticleCardComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

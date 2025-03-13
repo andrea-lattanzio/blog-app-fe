@@ -160,6 +160,10 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 mat-mdc-form-field-subscript-wrapper
   mat-mdc-form-field-bottom-align
   ng-tns-c3736059725-1 {

@@ -69,15 +69,16 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  handleRegister(): void {}
-
-  handleGoogleRegister(): void {
+  handleRegister(): void {
     if (this.registerForm.invalid) return;
     this.authService
       .authenticate<RegisterRequestBody>('login', { ...this.registerForm.value })
       .subscribe(() => {
         this.navigate('/');
       });
+  }
+
+  handleGoogleRegister(): void {
   }
 
   navigate(route: string): void {

@@ -14,6 +14,8 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormErrorComponent } from '../../components/form-error/form-error.component';
+import { AuthService } from '../../services/auth.service';
+import { RegisterRequestBody } from '../../services/interfaces/auth.service.interfaces';
 
 @Component({
   selector: 'app-register',
@@ -32,6 +34,7 @@ export class RegisterComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly fb = inject(NonNullableFormBuilder);
   public registerForm!: FormGroup;
+  private readonly authService = inject(AuthService);
 
   buttonInputs: ButtonInput = {
     type: 'submit',
@@ -68,7 +71,14 @@ export class RegisterComponent implements OnInit {
 
   handleRegister(): void {}
 
-  handleGoogleRegister(): void {}
+  handleGoogleRegister(): void {
+    if (this.registerForm.invalid) return;
+    this.authService
+      .authenticate<RegisterRequestBody>('login', { ...this.registerForm.value })
+      .subscribe(() => {
+        this.navigate('/');
+      });
+  }
 
   navigate(route: string): void {
     this.router.navigate([route]);

@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit {
   handleRegister(): void {
     if (this.registerForm.invalid) return;
     this.authService
-      .authenticate<RegisterRequestBody>('login', { ...this.registerForm.value })
+      .authenticate<RegisterRequestBody>('register', { ...this.registerForm.value })
       .subscribe(() => {
         this.navigate('/');
       });

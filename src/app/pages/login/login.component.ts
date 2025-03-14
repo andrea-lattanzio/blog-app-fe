@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
       .subscribe(() => {
         this.navigate('/');
       });
+    this.loginForm.reset();
   }
 
   handleGoogleLogin(): void {

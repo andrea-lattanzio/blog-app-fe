@@ -16,6 +16,8 @@ import { CommonModule } from '@angular/common';
 import { FormErrorComponent } from '../../components/form-error/form-error.component';
 import { AuthService } from '../../services/auth.service';
 import { RegisterRequestBody } from '../../services/interfaces/auth.service.interfaces';
+import { LoadingService } from '../../services/loading.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-register',
@@ -35,6 +37,7 @@ export class RegisterComponent implements OnInit {
   private readonly fb = inject(NonNullableFormBuilder);
   public registerForm!: FormGroup;
   private readonly authService = inject(AuthService);
+  private readonly alertService = inject(AlertService);
 
   buttonInputs: ButtonInput = {
     type: 'submit',
@@ -72,14 +75,17 @@ export class RegisterComponent implements OnInit {
   handleRegister(): void {
     if (this.registerForm.invalid) return;
     this.authService
-      .authenticate<RegisterRequestBody>('register', { ...this.registerForm.value })
+      .authenticate<RegisterRequestBody>('register', {
+        ...this.registerForm.value,
+      })
       .subscribe(() => {
+        this.alertService.success("Account created! Welcome Aboard 🎉");
         this.navigate('/');
       });
+    this.registerForm.reset();
   }
 
-  handleGoogleRegister(): void {
-  }
+  handleGoogleRegister(): void {}
 
   navigate(route: string): void {
     this.router.navigate([route]);

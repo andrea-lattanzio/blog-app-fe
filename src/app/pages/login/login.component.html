@@ -1,5 +1,8 @@
 <!-- login.component.html -->
-<div style="animation-duration: 0.5s" class="animated animate__fadeIn flex items-center justify-center h-auto pt-32 w-full">
+<div
+  style="animation-duration: 0.5s"
+  class="animated animate__fadeIn flex items-center justify-center h-auto pt-32 w-full"
+>
   <div class="p-8 w-80 lg:w-96">
     <h2 class="text-center text-2xl font-semibold font-playfair tracking-wide mb-6">
       &lt; Log in to your Account! /&gt;
@@ -16,7 +19,7 @@
         </div>
       </div>
       @if(hasError('password')) {<app-form-error [error]="getError('password')"></app-form-error>}
-      <app-button [inputs]="loginButtonInputs" (onClick)="handleLogin()"></app-button>
+      <app-button [inputs]="loginButtonInputs"></app-button>
     </form>
     <div class="mt-4 flex flex-col items-center">
       <p class="text-sm text-gray-500 mb-4">

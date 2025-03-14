@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, output, Output } from '@angular/core';
+import { Component, EventEmitter, Input, output, Output } from '@angular/core';
 
 export interface ButtonInput {
-  type?: "submit" | "reset"; 
+  type?: 'submit' | 'reset';
   icon?: string;
   text?: string;
   disabled?: boolean;
@@ -18,9 +18,11 @@ export interface ButtonInput {
 })
 export class ButtonComponent {
   @Input() inputs!: ButtonInput;
-  onClick = output();
+  onClick = new EventEmitter<void>();
 
   handleClick(): void {
-    this.onClick.emit();
+    if (this.onClick.observed) {
+      this.onClick.emit();
+    }
   }
 }

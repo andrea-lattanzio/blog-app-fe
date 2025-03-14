@@ -1,0 +1,15 @@
+<div class="fixed top-20 right-4 flex flex-col items-end space-y-4">
+  @for(alert of alerts; track $index) {
+  <div
+    [ngClass]="getAlertClass(alert.type)"
+    style="animation-duration: 0.5s;"
+    class="animated animate__fadeInRight w-80 p-4 flex items-center gap-4 rounded-lg shadow-lg border-l-4 bg-opacity-80"
+  >
+    <i class="bi" [ngClass]="getAlertIcon(alert.type)"></i>
+    <p class="text-sm font-medium">{{ alert.message }}</p>
+    <button (click)="closeAlert(alert)" class="ml-auto text-black hover:text-gray-700">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  }
+</div>

@@ -18,6 +18,7 @@ import {
   RegisterRequestBody,
   LoginResponseBody,
 } from './interfaces/auth.service.interfaces';
+import { AlertService } from './alert.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +26,7 @@ import {
 export class AuthService {
   private readonly jwtService = inject(JwtService);
   private readonly http = inject(HttpClient);
+  private readonly alertService = inject(AlertService);
 
   private _currentUser$ = new BehaviorSubject<User | null>(null);
   currentUser$ = this._currentUser$.asObservable();
@@ -61,7 +63,7 @@ export class AuthService {
       )
       .pipe(
         catchError((err) => {
-          //add alert service
+          this.alertService.error(err.error.message);
           return throwError(() => err);
         }),
         tap((res: LoginResponseBody) => {

@@ -19,7 +19,7 @@ export class ButtonOptions {
 })
 export class ButtonComponent {
   @Input() options!: ButtonOptions;
-  onClick = new EventEmitter<void>();
+  @Output() onClick = new EventEmitter<void>();
 
   handleClick(): void {
     if (this.onClick.observed) {

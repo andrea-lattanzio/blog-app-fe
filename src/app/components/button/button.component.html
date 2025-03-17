@@ -4,6 +4,15 @@
   [disabled]="inputs.disabled"
   [ngClass]="inputs.styles"
 >
-  @if(inputs.icon) { <i [class]="inputs.icon"></i>} @if(inputs.text) {
-  {{ inputs.text }} }
+  @if(inputs.icon) { 
+    <div class="w-[10%] flex justify-center bg-inherit">
+      <i [class]="inputs.icon"></i>
+    </div>
+  }
+  
+  @if(inputs.text) {
+    <div class="flex-grow text-left bg-inherit">
+      <span class="overflow-hidden">{{ inputs.text }}</span>
+    </div>
+  }
 </button>

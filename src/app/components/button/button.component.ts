@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, output, Output } from '@angular/core';
 
-export interface ButtonInput {
+export class ButtonInput {
   type?: 'submit' | 'reset';
   icon?: string;
   text?: string;
-  disabled?: boolean;
+  disabled?: boolean = false;
   styles?: string;
 }
 

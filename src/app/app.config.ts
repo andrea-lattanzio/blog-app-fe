@@ -4,7 +4,6 @@ import {
   provideRouter,
   withPreloading,
 } from '@angular/router';
-import player from 'lottie-web';
 import { routes } from './app.routes';
 import {
   HttpClientModule,
@@ -14,7 +13,6 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [

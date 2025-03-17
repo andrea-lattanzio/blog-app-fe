@@ -31,5 +31,5 @@
     <input id="email" type="text" class="input" placeholder="Your email" formControlName="email" />
     @if(hasError('email')) {<app-form-error [error]="getError('email')"></app-form-error>}
   </form>
-  <app-button [inputs]="subscribeButtonInputs" (onClick)="handleNewsletterSubscription()"></app-button>
+  <app-button [options]="subscribeButtonOptions" (onClick)="handleNewsletterSubscription()"></app-button>
 </div>

@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, output, Output } from '@angular/core';
 
-export class ButtonInput {
+export class ButtonOptions {
   type?: 'submit' | 'reset';
   icon?: string;
   text?: string;
   disabled?: boolean = false;
   styles?: string;
+  align?: string = 'text-center';
 }
 
 @Component({
@@ -17,7 +18,7 @@ export class ButtonInput {
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  @Input() inputs!: ButtonInput;
+  @Input() options!: ButtonOptions;
   onClick = new EventEmitter<void>();
 
   handleClick(): void {

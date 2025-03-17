@@ -1,6 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from '../../services/interfaces/auth.service.interfaces';
-import { ButtonComponent, ButtonInput } from '../button/button.component';
+import { ButtonComponent } from '../button/button.component';
+import {
+  DELETE_PROFILE_BUTTON_OPTIONS,
+  LIKED_BUTTON_OPTIONS,
+  LOGOUT_BUTTON_OPTIONS,
+  SAVED_BUTTON_OPTIONS,
+} from '../../../constants/button.constants';
 
 @Component({
   selector: 'app-profile-section',
@@ -10,25 +16,9 @@ import { ButtonComponent, ButtonInput } from '../button/button.component';
   styleUrl: './profile-section.component.scss',
 })
 export class ProfileSectionComponent {
-  likedButtonOptions: ButtonInput = {
-    text: 'Liked Articles',
-    icon: 'bi bi-heart-fill',
-    styles: 'w-full font-poppins text-lg',
-  };
-  savedButtonOptions: ButtonInput = {
-    text: 'Saved Articles',
-    icon: 'bi bi-bookmark-fill',
-    styles: 'w-full font-poppins text-lg',
-  };
-  logoutButtonOptions: ButtonInput = {
-    text: 'Logout',
-    icon: 'bi-box-arrow-right',
-    styles: 'w-full font-poppins text-lg',
-  };
-  deleteProfileButtonOptions: ButtonInput = {
-    text: 'Delete profile',
-    icon: 'bi-person-fill-x',
-    styles: '!border-red-700 !text-red-700 w-full font-poppins text-lg',
-  };
   @Input() user!: User | null;
+  likedButtonOptions = LIKED_BUTTON_OPTIONS;
+  savedButtonOptions = SAVED_BUTTON_OPTIONS;
+  logoutButtonOptions = LOGOUT_BUTTON_OPTIONS;
+  deleteProfileButtonOptions = DELETE_PROFILE_BUTTON_OPTIONS;
 }

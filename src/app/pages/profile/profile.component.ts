@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ProfileSectionComponent } from '../../components/profile-section/profile-section.component';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent, ButtonInput } from '../../components/button/button.component';
+import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-profile',

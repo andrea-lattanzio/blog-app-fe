@@ -19,14 +19,14 @@
         </div>
       </div>
       @if(hasError('password')) {<app-form-error [error]="getError('password')"></app-form-error>}
-      <app-button [inputs]="loginButtonInputs"></app-button>
+      <app-button [options]="loginButtonOptions"></app-button>
     </form>
     <div class="mt-4 flex flex-col items-center">
       <p class="text-sm text-gray-500 mb-4">
         <span>Don't have an account? </span>
         <a (click)="navigate('register')" class="link font-semibold">Sign up here</a>
       </p>
-      <app-button [inputs]="googleButtonInputs" (onClick)="handleGoogleLogin()"></app-button>
+      <app-button [options]="googleButtonOptions" (onClick)="handleGoogleLogin()"></app-button>
     </div>
   </div>
 </div>

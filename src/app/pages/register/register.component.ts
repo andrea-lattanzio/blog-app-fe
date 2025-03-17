@@ -1,8 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  ButtonComponent,
-  ButtonInput,
-} from '../../components/button/button.component';
+import { ButtonComponent } from '../../components/button/button.component';
 import { Router } from '@angular/router';
 import {
   FormGroup,
@@ -18,6 +15,10 @@ import { AuthService } from '../../services/auth.service';
 import { RegisterRequestBody } from '../../services/interfaces/auth.service.interfaces';
 import { LoadingService } from '../../services/loading.service';
 import { AlertService } from '../../services/alert.service';
+import {
+  GOOGLE_BUTTON_OPTIONS,
+  REGISTER_BUTTON_OPTIONS,
+} from '../../../constants/button.constants';
 
 @Component({
   selector: 'app-register',
@@ -38,18 +39,8 @@ export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
   private readonly authService = inject(AuthService);
   private readonly alertService = inject(AlertService);
-
-  buttonInputs: ButtonInput = {
-    type: 'submit',
-    icon: 'bi bi-box-arrow-in-right',
-    text: 'Sign up',
-    styles: 'w-full font-semibold font-poppins mt-4',
-  };
-  googleButtonInputs: ButtonInput = {
-    icon: 'bi bi-google',
-    text: 'Sign up with Google',
-    styles: 'font-semibold font-poppins',
-  };
+  registerButtonOptions = REGISTER_BUTTON_OPTIONS;
+  googleButtonOptions = GOOGLE_BUTTON_OPTIONS;
 
   ngOnInit(): void {
     this.registerForm = this.fb.group(
@@ -79,7 +70,7 @@ export class RegisterComponent implements OnInit {
         ...this.registerForm.value,
       })
       .subscribe(() => {
-        this.alertService.success("Account created! Welcome Aboard 🎉");
+        this.alertService.success('Account created! Welcome Aboard 🎉');
         this.navigate('/');
       });
     this.registerForm.reset();

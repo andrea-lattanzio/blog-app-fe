@@ -1,18 +1,16 @@
 <button
   class="button disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-transparent"
   (click)="handleClick()"
-  [disabled]="inputs.disabled"
-  [ngClass]="inputs.styles"
+  [disabled]="options.disabled"
+  [ngClass]="options.styles"
 >
-  @if(inputs.icon) { 
-    <div class="w-[10%] flex justify-center bg-inherit">
-      <i [class]="inputs.icon"></i>
-    </div>
-  }
-  
-  @if(inputs.text) {
-    <div class="flex-grow text-left bg-inherit">
-      <span class="overflow-hidden">{{ inputs.text }}</span>
-    </div>
+  @if(options.icon) {
+  <div class="w-[10%] flex items-center justify-center bg-transparent">
+    <i [class]="options.icon"></i>
+  </div>
+  } @if(options.text) {
+  <div class="flex-grow bg-transparent" [ngClass]="options.align">
+    <span class="overflow-hidden">{{ options.text }}</span>
+  </div>
   }
 </button>

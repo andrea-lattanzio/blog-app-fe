@@ -1,8 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  ButtonComponent,
-  ButtonInput,
-} from '../../components/button/button.component';
+import { ButtonComponent } from '../../components/button/button.component';
 import {
   FormGroup,
   FormsModule,
@@ -13,6 +10,7 @@ import {
 } from '@angular/forms';
 import { FormErrorComponent } from '../../components/form-error/form-error.component';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
+import { SUBSCRIBE_BUTTON_OPTIONS } from '../../../constants/button.constants';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +20,7 @@ import { ArticleCardComponent } from '../../components/article-card/article-card
     FormsModule,
     ReactiveFormsModule,
     FormErrorComponent,
-    ArticleCardComponent
+    ArticleCardComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -30,11 +28,7 @@ import { ArticleCardComponent } from '../../components/article-card/article-card
 export class HomeComponent implements OnInit {
   private readonly fb = inject(NonNullableFormBuilder);
   public newsletterForm!: FormGroup;
-  subscribeButtonInputs: ButtonInput = {
-    type: 'submit',
-    text: 'Subscribe',
-    styles: 'w-full font-semibold font-playfair mt-2',
-  };
+  subscribeButtonOptions = SUBSCRIBE_BUTTON_OPTIONS;
 
   ngOnInit(): void {
     this.newsletterForm = this.fb.group(
@@ -46,8 +40,7 @@ export class HomeComponent implements OnInit {
   }
 
   handleNewsletterSubscription(): void {
-    if(this.newsletterForm.invalid) return;
-    
+    if (this.newsletterForm.invalid) return;
   }
 
   hasError(control: string): boolean {

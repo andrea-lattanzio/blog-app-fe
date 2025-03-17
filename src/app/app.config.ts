@@ -14,7 +14,6 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
-import { provideLottieOptions } from 'ngx-lottie';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
@@ -22,7 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withPreloading(PreloadAllModules)),
     HttpClientModule,
     provideHttpClient(withInterceptors([authInterceptor, loadingInterceptor])),
-    BrowserModule, provideAnimationsAsync(),
-    provideLottieOptions({ player: () => player }),
+    BrowserModule,
   ],
 };

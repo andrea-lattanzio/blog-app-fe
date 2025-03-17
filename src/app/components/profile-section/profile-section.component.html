@@ -1,0 +1,27 @@
+<div
+  class="h-auto w-80 bg-firstLayerBg border border-[#464646] shadow-lg rounded-lg flex flex-col items-center px-4 py-8 space-y-4"
+>
+  <div class="text-center"><i class="bi bi-person icon text-6xl"></i></div>
+  <h1 class="text-xl font-poppins font-semibold text-secondaryText">{{ user?.fullname }}</h1>
+  <div class="p-4 rounded-lg w-full overflow-hidden">
+    <p class="text-lg text-secondaryText font-semibold flex">
+      Username:
+      <span class="ml-3 font-normal text-primaryText block truncate w-full" style="font-weight: 200">
+        {{ user?.username }}
+      </span>
+    </p>
+    <p class="text-lg text-secondaryText font-semibold flex">
+      Email:
+      <span class="ml-3 font-normal text-primaryText block truncate w-full" style="font-weight: 200">
+        {{ user?.email }}
+      </span>
+    </p>
+  </div>
+  <div class="w-20 h-1 bg-gray-400 rounded-full mx-auto my-4"></div>
+  <div class="pt-4 flex flex-col space-y-3">
+    <app-button [inputs]="likedButtonOptions"></app-button>
+    <app-button [inputs]="savedButtonOptions"></app-button>
+    <app-button [inputs]="logoutButtonOptions"></app-button>
+    <app-button [inputs]="deleteProfileButtonOptions"></app-button>
+  </div>
+</div>

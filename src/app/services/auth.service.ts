@@ -77,4 +77,21 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.jwtService.hasToken();
   }
+
+  logout(): void {
+    this._currentUser$.next(null);
+    this.jwtService.removeToken();
+  }
+
+  deleteProfile() {
+    return this.http.delete(`${environment.uri}/auth`).pipe(
+      catchError((err) => {
+        this.alertService.error(err.error.message);
+        return throwError(() => err);
+      }),
+      tap((_) => {
+        this.logout();
+      })
+    );
+  }
 }

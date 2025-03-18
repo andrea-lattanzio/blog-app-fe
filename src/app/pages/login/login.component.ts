@@ -1,7 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import {
-  ButtonComponent,
-} from '../../components/button/button.component';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { ButtonComponent } from '../../components/button/button.component';
 import { Router } from '@angular/router';
 import {
   FormGroup,
@@ -15,7 +13,11 @@ import { FormErrorComponent } from '../../components/form-error/form-error.compo
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { LoginRequestBody } from '../../services/interfaces/auth.service.interfaces';
-import { GOOGLE_BUTTON_OPTIONS, LOGIN_BUTTON_OPTIONS } from '../../../constants/button.constants';
+import {
+  GOOGLE_BUTTON_OPTIONS,
+  LOGIN_BUTTON_OPTIONS,
+} from '../../../constants/button.constants';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-login',
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
   private readonly authService = inject(AuthService);
   loginButtonOptions = LOGIN_BUTTON_OPTIONS;
   googleButtonOptions = GOOGLE_BUTTON_OPTIONS;
+  private readonly destroyed = inject(DestroyRef);
 
   ngOnInit(): void {
     this.loginForm = this.fb.group(
@@ -52,6 +55,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) return;
     this.authService
       .authenticate<LoginRequestBody>('login', { ...this.loginForm.value })
+      .pipe(takeUntilDestroyed(this.destroyed))
       .subscribe(() => {
         this.navigate('/');
       });

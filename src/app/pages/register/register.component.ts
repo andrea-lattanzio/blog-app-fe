@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { ButtonComponent } from '../../components/button/button.component';
 import { Router } from '@angular/router';
 import {
@@ -19,6 +19,7 @@ import {
   GOOGLE_BUTTON_OPTIONS,
   REGISTER_BUTTON_OPTIONS,
 } from '../../../constants/button.constants';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-register',
@@ -41,6 +42,7 @@ export class RegisterComponent implements OnInit {
   private readonly alertService = inject(AlertService);
   registerButtonOptions = REGISTER_BUTTON_OPTIONS;
   googleButtonOptions = GOOGLE_BUTTON_OPTIONS;
+  private readonly destroyed = inject(DestroyRef);
 
   ngOnInit(): void {
     this.registerForm = this.fb.group(
@@ -69,6 +71,7 @@ export class RegisterComponent implements OnInit {
       .authenticate<RegisterRequestBody>('register', {
         ...this.registerForm.value,
       })
+      .pipe(takeUntilDestroyed(this.destroyed))
       .subscribe(() => {
         this.alertService.success('Account created! Welcome Aboard 🎉');
         this.navigate('/');

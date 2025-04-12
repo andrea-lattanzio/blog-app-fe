@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import {
   PreloadAllModules,
   provideRouter,
@@ -13,6 +13,7 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
+import { MatNativeDateModule } from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +21,6 @@ export const appConfig: ApplicationConfig = {
     HttpClientModule,
     provideHttpClient(withInterceptors([authInterceptor, loadingInterceptor])),
     BrowserModule,
+    importProvidersFrom(MatNativeDateModule),
   ],
 };

@@ -6,28 +6,28 @@ import { ButtonOptions } from '../app/components/button/button.component';
 export const LIKED_BUTTON_OPTIONS: ButtonOptions = {
   text: 'Liked Articles',
   icon: 'bi bi-heart-fill',
-  styles: 'w-full font-poppins text-lg',
+  styles: 'w-full font-poppins text-lg lg:text-sm',
   align: 'text-left',
 };
 
 export const SAVED_BUTTON_OPTIONS: ButtonOptions = {
   text: 'Saved Articles',
   icon: 'bi bi-bookmark-fill',
-  styles: 'w-full font-poppins text-lg',
+  styles: 'w-full font-poppins text-lg lg:text-sm',
   align: 'text-left',
 };
 
 export const LOGOUT_BUTTON_OPTIONS: ButtonOptions = {
   text: 'Logout',
   icon: 'bi bi-box-arrow-right',
-  styles: 'w-full font-poppins text-lg',
+  styles: 'w-full font-poppins text-lg lg:text-sm',
   align: 'text-left',
 };
 
 export const DELETE_PROFILE_BUTTON_OPTIONS: ButtonOptions = {
   text: 'Delete profile',
   icon: 'bi-person-fill-x',
-  styles: '!border-red-700 !text-red-700 w-full font-poppins text-lg',
+  styles: '!border-red-700 !text-red-700 w-full font-poppins text-lg lg:text-sm',
   align: 'text-left',
 };
 

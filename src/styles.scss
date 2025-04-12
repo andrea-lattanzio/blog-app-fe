@@ -51,6 +51,11 @@ body {
   @include input-style;
 }
 
+/* Transparent Background for material dialogs */
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: $second-layer-bg-color;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

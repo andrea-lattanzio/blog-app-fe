@@ -1,0 +1,19 @@
+<div class="p-6 rounded-xl bg-secondLayerBg shadow-lg border border-[#464646] w-full max-w-md">
+  <h2 class="text-2xl font-semibold mb-4 font-playfair">Delete Account?</h2>
+  <div class="mb-6">
+    <p>{{ data.message }}</p>
+  </div>
+  <div class="flex justify-end space-x-2">
+    <button
+      class="w-40 button disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+      (click)="closeDialog(true)"
+    >
+      <div class="w-[10%] flex items-center justify-center bg-transparent">
+        <i class="bi bi-check-circle"></i>
+      </div>
+      <div class="flex-grow bg-transparent">
+        <span class="overflow-hidden font-poppins">Confirm</span>
+      </div>
+    </button>
+  </div>
+</div>

@@ -52,8 +52,8 @@ body {
 }
 
 /* Transparent Background for material dialogs */
-::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
-  background-color: $second-layer-bg-color;
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface .mat-dialog-container {
+  background-color: transparent !important;
 }
 
 input:-webkit-autofill,

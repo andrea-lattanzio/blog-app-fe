@@ -60,3 +60,17 @@ export const SUBSCRIBE_BUTTON_OPTIONS: ButtonOptions = {
   text: 'Subscribe',
   styles: 'w-full font-semibold font-playfair mt-2',
 };
+
+/**
+ * Button options for cancel and confirm buttons
+ */
+export const CANCEL_BUTTON_OPTIONS: ButtonOptions = {
+  text: 'Cancel',
+  styles: 'w-full font-poppins',
+}
+
+export const CONFIRM_BUTTON_OPTIONS: ButtonOptions = {
+  text: 'Confirm',
+  icon: 'bi bi-check-circle',
+  styles: 'w-full font-poppins',
+}

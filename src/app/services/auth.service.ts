@@ -27,6 +27,7 @@ export class AuthService {
   private readonly jwtService = inject(JwtService);
   private readonly http = inject(HttpClient);
   private readonly alertService = inject(AlertService);
+  private readonly router = inject(Router);
 
   private _currentUser$ = new BehaviorSubject<User | null>(null);
   currentUser$ = this._currentUser$.asObservable();
@@ -44,6 +45,7 @@ export class AuthService {
       .pipe(
         catchError((_) => {
           this.jwtService.removeToken();
+          this.router.navigate(['/']);
           return of(null);
         })
       )

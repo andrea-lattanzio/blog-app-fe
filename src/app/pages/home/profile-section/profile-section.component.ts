@@ -36,13 +36,16 @@ export class ProfileSectionComponent {
     this.router.navigate(['/']);
   }
 
-  handleDeleteProfile(): void {
-    this.showConfirmDialog();
-  }
-
-  private showConfirmDialog(): void {
-    this.dialog.open(ConfirmDeleteDialogComponent, {
+  public showConfirmDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
       data: { message: 'Are you sure you want to delete your account?' },
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.router.navigate(['/']);
+      }
+    });
+
   }
 }

@@ -1,0 +1,14 @@
+@import "../../../styles/theme.scss";
+
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: transparent !important;
+}
+
+::ng-deep.cdk-overlay-backdrop {
+  --backdrop-blur: 3px;
+  backdrop-filter: blur(var(--backdrop-blur));
+}
+
+::ng-deep.cdk-overlay-transparent-backdrop {
+  background-color: transparent;
+}

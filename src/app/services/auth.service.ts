@@ -90,9 +90,6 @@ export class AuthService {
       catchError((err) => {
         this.alertService.error(err.error.message);
         return throwError(() => err);
-      }),
-      tap((_) => {
-        this.logout();
       })
     );
   }

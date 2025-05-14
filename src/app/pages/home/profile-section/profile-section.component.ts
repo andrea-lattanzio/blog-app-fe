@@ -41,10 +41,10 @@ export class ProfileSectionComponent {
       data: { message: 'Are you sure you want to delete your account?' },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-        this.router.navigate(['/']);
-      }
+    dialogRef.afterClosed().subscribe(_ => {
+      this.authService.logout();
+      this.authService.deleteProfile();
+      this.router.navigate(['/']);
     });
 
   }

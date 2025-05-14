@@ -23,7 +23,7 @@ export default class ConfirmDeleteDialogComponent {
   public cancelButtonOptions = CANCEL_BUTTON_OPTIONS;
   public confirmButtonOptions = CONFIRM_BUTTON_OPTIONS;
 
-  public closeDialog(result: boolean): void {
-    this.dialogRef.close(result);
+  public closeDialog(): void {
+    this.dialogRef.close();
   }
 }

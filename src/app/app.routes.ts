@@ -10,7 +10,7 @@ export const routes: Routes = [
   {
     path: 'react',
     loadComponent: () =>
-      import('./pages/home/home.component').then((c) => c.HomeComponent),
+      import('./pages/react/react.component').then((c) => c.ReactComponent),
   },
   {
     path: 'angular',

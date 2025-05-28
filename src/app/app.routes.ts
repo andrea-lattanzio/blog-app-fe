@@ -8,19 +8,9 @@ export const routes: Routes = [
       import('./pages/home/home.component').then((c) => c.HomeComponent),
   },
   {
-    path: 'react',
+    path: 'articles/:category',
     loadComponent: () =>
-      import('./pages/react/react.component').then((c) => c.ReactComponent),
-  },
-  {
-    path: 'angular',
-    loadComponent: () =>
-      import('./pages/home/home.component').then((c) => c.HomeComponent),
-  },
-  {
-    path: 'node',
-    loadComponent: () =>
-      import('./pages/home/home.component').then((c) => c.HomeComponent),
+      import('./pages/articles/articles.component').then((c) => c.ArticlesComponent),
   },
   {
     path: 'login',

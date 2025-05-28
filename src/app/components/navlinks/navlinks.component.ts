@@ -11,7 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 export class NavlinksComponent {
   private readonly router = inject(Router);
 
-  public navigate(route: string): void {
-    this.router.navigate([route]);
+  public navigate(category: string): void {
+    this.router.navigate(['/articles', category]);
   }
 }

@@ -1,20 +1,45 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnChanges, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { ArticleService } from '../../services/fake/fake.article.service';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Article } from '../../services/interfaces/article/article.interface';
 import { ArticleTitleComponent } from '../../components/article-title/article-title.component';
+import {
+  animate,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-articles',
   standalone: true,
-  imports: [AsyncPipe, ArticleCardComponent, MatIconModule, ArticleTitleComponent],
+  imports: [
+    AsyncPipe,
+    ArticleCardComponent,
+    MatIconModule,
+    ArticleTitleComponent,
+    NgClass,
+  ],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter, * => *', [
+        style({ opacity: 0 }),
+        animate('1200ms ease-in-out', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class ArticlesComponent implements OnInit {
   constructor(
@@ -25,12 +50,14 @@ export class ArticlesComponent implements OnInit {
 
   public articles$: Observable<Article[]> = this.articleSrv.articles$;
   public category: string | null = null;
+  public trigger: string | null = null;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.category = params.get('category');
       this.cdr.markForCheck();
-    })
+      this.category = params.get('category');
+      this.trigger = this.category;
+    });
   }
 
   /**

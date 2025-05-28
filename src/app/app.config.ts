@@ -14,7 +14,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
 import { MatNativeDateModule } from '@angular/material/core';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 
 export const appConfig: ApplicationConfig = {
@@ -24,6 +24,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([authInterceptor, loadingInterceptor])),
     BrowserModule,
     importProvidersFrom(MatNativeDateModule),
-    provideAnimationsAsync(),
+    provideAnimations(),
   ],
 };

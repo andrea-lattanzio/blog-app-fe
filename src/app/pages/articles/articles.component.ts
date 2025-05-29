@@ -41,34 +41,21 @@ import { LoadingService } from '../../services/loading.service';
 export class ArticlesComponent implements OnInit {
   constructor(
     private readonly articleSrv: ArticleService,
-    private readonly loadingSrv: LoadingService,
     private readonly route: ActivatedRoute,
     private readonly cdr: ChangeDetectorRef
   ) {}
 
   public category: string | null = null;
   public trigger: string | null = null;
-
-  combinedData$: Observable<{
-    response: PaginatedResult<Article> | null;
-    loading: boolean;
-  }> = new Observable();
+  public articles$ = this.articleSrv.articles$;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.cdr.markForCheck();
       this.category = params.get('category');
       this.trigger = this.category;
-      this.getArticles();
+      this.articleSrv.findAll({ tag: this.category! });
     });
-  }
-
-  private getArticles(): void {
-    this.articleSrv.findAll({ tag: this.category! });
-    this.combinedData$ = combineLatest([
-      this.articleSrv.articles$,
-      this.loadingSrv.loading$,
-    ]).pipe(map(([response, loading]) => ({ response, loading })));
   }
 
   /**

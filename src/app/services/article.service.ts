@@ -26,6 +26,7 @@ export class ArticleService {
   constructor() {}
 
   public findAll(paginationParams: ArticlePaginationQueryDto) {
+    this._articles$.next(null);
     let params = new HttpParams();
 
     for(const key in paginationParams) {

@@ -9,10 +9,9 @@
   <div
     class="mt-5 grid gap-4 md:grid-cols-2 md:gap-8 lg:max-w-[65%] w-full mx-auto"
   >
-    @if(combinedData$ | async; as data) {
-      @if(!data.loading) {
-        @if (data.response?.status === 'success' && data.response?.page?.items?.length) {
-          @for (article of data.response?.page?.items; track article.id) {
+    @if(articles$ | async; as articles) {
+      @if (articles?.status === 'success' && articles.page?.items?.length) {
+          @for (article of articles?.page?.items; track article.id) {
             <app-article-card [article]="article" />
           }
         } @else {
@@ -23,7 +22,6 @@
             <p class="mt-4 text-base leading-6">Click "Add" to get started!</p>
           </div>
         }
-      }
     }
   </div>
 </div>

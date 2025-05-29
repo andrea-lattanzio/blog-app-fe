@@ -15,6 +15,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ArticleService } from '../../services/article.service';
 import { PaginatedResult } from '../../services/interfaces/pagination/pagination.interface';
 import { LoadingService } from '../../services/loading.service';
+import { ArticleCardSkeletonComponent } from '../../components/article-card-skeleton/article-card-skeleton.component';
 
 @Component({
   selector: 'app-articles',
@@ -25,6 +26,7 @@ import { LoadingService } from '../../services/loading.service';
     MatIconModule,
     ArticleTitleComponent,
     NgClass,
+    ArticleCardSkeletonComponent
   ],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',

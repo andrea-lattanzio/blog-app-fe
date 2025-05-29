@@ -1,0 +1,13 @@
+@keyframes pulse-glow {
+  0%, 100% {
+    background-color: rgba(209, 213, 219, 0.2); /* Tailwind gray-300 with some transparency */
+  }
+  50% {
+    background-color: rgba(209, 213, 219, 0.3);
+  }
+}
+
+/* Apply the animation to the main container, and also to its inner placeholder elements */
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
+}

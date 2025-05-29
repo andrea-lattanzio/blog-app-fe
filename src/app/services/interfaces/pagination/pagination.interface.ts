@@ -3,7 +3,7 @@ export enum ResponseStatus {
     ERROR = 'error',
 }
 
-export interface paginationResult<T> {
+export interface PaginatedResult<T> {
     status: ResponseStatus;
     total: number;
     page: {
@@ -11,4 +11,9 @@ export interface paginationResult<T> {
         size: number;
         items: T[];
     }
+}
+
+export interface PaginationQueryDto {
+  page?: number;
+  size?: number;
 }

@@ -4,20 +4,17 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { ArticleService } from '../../services/fake/fake.article.service';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 import { Article } from '../../services/interfaces/article/article.interface';
 import { ArticleTitleComponent } from '../../components/article-title/article-title.component';
-import {
-  animate,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { ArticleService } from '../../services/article.service';
+import { PaginatedResult } from '../../services/interfaces/pagination/pagination.interface';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-articles',
@@ -44,20 +41,34 @@ import {
 export class ArticlesComponent implements OnInit {
   constructor(
     private readonly articleSrv: ArticleService,
+    private readonly loadingSrv: LoadingService,
     private readonly route: ActivatedRoute,
     private readonly cdr: ChangeDetectorRef
   ) {}
 
-  public articles$: Observable<Article[]> = this.articleSrv.articles$;
   public category: string | null = null;
   public trigger: string | null = null;
+
+  combinedData$: Observable<{
+    response: PaginatedResult<Article> | null;
+    loading: boolean;
+  }> = new Observable();
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.cdr.markForCheck();
       this.category = params.get('category');
       this.trigger = this.category;
+      this.getArticles();
     });
+  }
+
+  private getArticles(): void {
+    this.articleSrv.findAll({ tag: this.category! });
+    this.combinedData$ = combineLatest([
+      this.articleSrv.articles$,
+      this.loadingSrv.loading$,
+    ]).pipe(map(([response, loading]) => ({ response, loading })));
   }
 
   /**

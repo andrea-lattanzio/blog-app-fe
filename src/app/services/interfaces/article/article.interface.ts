@@ -7,6 +7,6 @@ export interface Article {
     description : string;
     tag : string;
     updatedAt : Date;
-    author: User;
+    author?: User;
     chapters?: Chapter[];
 }

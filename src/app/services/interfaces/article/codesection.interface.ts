@@ -3,5 +3,4 @@ export interface CodeSection {
     language: string;
     code: string;
     caption?: string;
-    paragraphId: string;
 }

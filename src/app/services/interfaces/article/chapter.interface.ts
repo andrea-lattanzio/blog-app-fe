@@ -4,5 +4,4 @@ export interface Chapter {
     id: string;
     title: string;
     paragraphs: Paragraph[];
-    articleId: string;
 }

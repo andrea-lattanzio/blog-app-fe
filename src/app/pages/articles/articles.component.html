@@ -6,20 +6,26 @@
     class="mb-8"
     [category]="category">
   </app-article-title>
-  <div
-    class="mt-5 grid gap-4 md:grid-cols-2 md:gap-8 lg:max-w-[65%] w-full mx-auto"
-  >
-    @if(articles$ | async; as articles) {
+  @if(articles$ | async; as articles) {
       @if (articles?.status === 'success' && articles.page.items.length) {
-          @for (article of articles?.page?.items; track article.id) {
-            <app-article-card [article]="article" />
-          }
+          <div class="mt-5 grid gap-4 md:grid-cols-2 md:gap-8 lg:max-w-[65%] w-full mx-auto">
+              @for (article of articles?.page?.items; track article.id) {
+                <app-article-card [article]="article" />
+              }
+          </div>
+      } @else {
+        <div class="mt-18 rounded-md border-secondLayerBg flex flex-col items-center justify-center lg:w-96 w-full p-6">
+          <mat-icon svgIcon="empty" class="mat-icon"></mat-icon>
+          <h2 class="mt-6 text-2xl font-bold mb-4 font-playfair text-secondLayerBg">No results were found!</h2>
+          <p class="mb-6 leading-relaxed text-secondaryText">Try searching for a different topic</p>
+        </div>
       }
     } @else {
-      <app-article-card-skeleton></app-article-card-skeleton>
-      <app-article-card-skeleton></app-article-card-skeleton>
-      <app-article-card-skeleton></app-article-card-skeleton>
-      <app-article-card-skeleton></app-article-card-skeleton>
+      <div class="mt-5 grid gap-4 md:grid-cols-2 md:gap-8 lg:max-w-[65%] w-full mx-auto">
+        <app-article-card-skeleton></app-article-card-skeleton>
+        <app-article-card-skeleton></app-article-card-skeleton>
+        <app-article-card-skeleton></app-article-card-skeleton>
+        <app-article-card-skeleton></app-article-card-skeleton>
+      </div>
     }
-  </div>
 </div>

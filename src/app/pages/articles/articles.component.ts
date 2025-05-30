@@ -8,14 +8,11 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, map, Observable } from 'rxjs';
-import { Article } from '../../services/interfaces/article/article.interface';
 import { ArticleTitleComponent } from '../../components/article-title/article-title.component';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ArticleService } from '../../services/article.service';
-import { PaginatedResult } from '../../services/interfaces/pagination/pagination.interface';
-import { LoadingService } from '../../services/loading.service';
 import { ArticleCardSkeletonComponent } from '../../components/article-card-skeleton/article-card-skeleton.component';
+import { ArticleSearchComponent } from '../../components/article-search/article-search.component';
 
 @Component({
   selector: 'app-articles',
@@ -26,7 +23,8 @@ import { ArticleCardSkeletonComponent } from '../../components/article-card-skel
     MatIconModule,
     ArticleTitleComponent,
     NgClass,
-    ArticleCardSkeletonComponent
+    ArticleCardSkeletonComponent,
+    ArticleSearchComponent
   ],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',

@@ -15,7 +15,7 @@ export class FormErrorComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.error) {
-      const errorKey = Object.keys(this.error)[0] as keyof ValidationErrors; // Explicitly cast the error key
+      const errorKey = Object.keys(this.error)[0] as keyof ValidationErrors;
       this.message = this.getErrorMessage(errorKey, this.error);
     }
   }

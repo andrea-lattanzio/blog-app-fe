@@ -2,10 +2,9 @@
         <h2 class="text-3xl font-bold mb-4 font-playfair">Subscribe To My Newsletter</h2>
         <p class="mb-6 leading-relaxed text-secondaryText">
             Get my new articles directly in your inbox.</p>
-        <form>
-            <div class="mb-4">
-                <input id="email" type="email" class="input mb-1" placeholder="Email address" formControlName="email" />
-            </div>
+        <form [formGroup]="subscribeForm" (ngSubmit)="handleSubscription()" id="form" class="space-y-4">
+            <div class="mb-4"><input id="email" type="email" class="input mb-1" placeholder="Email address" formControlName="email" /></div>
             <app-button [options]="subscribeButtonOptions"></app-button>
         </form>
+        @if(hasError('email')) {<app-form-error [error]="getError('email')"></app-form-error>}
     </div>

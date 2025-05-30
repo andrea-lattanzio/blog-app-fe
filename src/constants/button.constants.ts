@@ -53,15 +53,6 @@ export const LOGIN_BUTTON_OPTIONS: ButtonOptions = {
 };
 
 /**
- * Button options for subscribe button in homepage
- */
-export const SUBSCRIBE_BUTTON_OPTIONS: ButtonOptions = {
-  type: 'submit',
-  text: 'Subscribe',
-  styles: 'w-full font-semibold font-playfair mt-2',
-};
-
-/**
  * Button options for cancel and confirm buttons
  */
 export const CANCEL_BUTTON_OPTIONS: ButtonOptions = {

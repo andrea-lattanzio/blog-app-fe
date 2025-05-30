@@ -65,3 +65,8 @@ export const CONFIRM_BUTTON_OPTIONS: ButtonOptions = {
   icon: 'bi bi-check-circle',
   styles: 'w-full font-poppins',
 }
+
+export const SUBSCRIBE_BUTTON_OPTIONS: ButtonOptions = {
+  text: 'Subscribe',
+  styles: 'w-full font-poppins color bg-secondLayerBg',
+}

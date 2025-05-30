@@ -13,6 +13,7 @@ import { ArticleCardComponent } from '../../components/article-card/article-card
 import { ArticleService } from '../../services/article.service';
 import { ArticleCardSkeletonComponent } from '../../components/article-card-skeleton/article-card-skeleton.component';
 import { AsyncPipe } from '@angular/common';
+import { JoinNewsletterComponent } from '../../components/join-newsletter/join-newsletter.component';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ import { AsyncPipe } from '@angular/common';
     ArticleCardComponent,
     ArticleCardSkeletonComponent,
     AsyncPipe,
+    JoinNewsletterComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

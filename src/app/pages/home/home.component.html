@@ -12,17 +12,23 @@
   </div>
   <div class="mt-8 space-y-6 text-center text-xl font-playfair lg:w-96 w-full" style="font-weight: 300">
     <p>
-      I'm a Junior Web Developer sharing my knowledge about software through articles, and my newsletter on this
-      personal blog.
+      I'm a Junior Web Developer sharing my knowledge about software through articles, on this personal blog.
     </p>
-    <p>When I'm not coding i'm either lifting, or hiking ⛰️</p>
   </div>
-  <h1 class="mt-12 text-3xl font-playfair font-semibold tracking-wide text-center">Recently Published</h1>
+  <h1 class="mt-16 text-3xl font-playfair font-semibold tracking-wide text-center">Recently Published</h1>
   <div class="mt-5 w-20 h-1 bg-gray-400 rounded-full mx-auto my-4"></div>
   <div class="mt-5 flex flex-col items-center space-y-4 lg:w-96 w-full">
-    <app-article-card></app-article-card>
-    <app-article-card></app-article-card>
-    <app-article-card></app-article-card>
+    @if(articles$ | async; as articles) {
+      @if (articles.length > 0) {
+          @for (article of articles; track article.id) {
+            <app-article-card [article]="article" />
+          }
+      }
+    } @else {
+      <app-article-card-skeleton></app-article-card-skeleton>
+      <app-article-card-skeleton></app-article-card-skeleton>
+      <app-article-card-skeleton></app-article-card-skeleton>
+    }
   </div>
   <div class="mt-12 w-full text-center">
     <i class="bi bi-braces-asterisk icon text-7xl"></i>

@@ -11,6 +11,9 @@ import {
 import { FormErrorComponent } from '../../components/form-error/form-error.component';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { SUBSCRIBE_BUTTON_OPTIONS } from '../../../constants/button.constants';
+import { ArticleService } from '../../services/article.service';
+import { ArticleCardSkeletonComponent } from '../../components/article-card-skeleton/article-card-skeleton.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -21,16 +24,22 @@ import { SUBSCRIBE_BUTTON_OPTIONS } from '../../../constants/button.constants';
     ReactiveFormsModule,
     FormErrorComponent,
     ArticleCardComponent,
+    ArticleCardSkeletonComponent,
+    AsyncPipe
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
+  private readonly articlesSrv = inject(ArticleService);
+  public articles$ = this.articlesSrv.latestArticles$;
+
   private readonly fb = inject(NonNullableFormBuilder);
   public newsletterForm!: FormGroup;
   subscribeButtonOptions = SUBSCRIBE_BUTTON_OPTIONS;
 
   ngOnInit(): void {
+    this.articlesSrv.getLatestThree();
     this.newsletterForm = this.fb.group(
       {
         email: ['', Validators.required, Validators.email],

@@ -28,9 +28,12 @@ export class ArticleService {
   );
   articles$ = this._articles$.asObservable();
 
+  private _latestArticles$ = new BehaviorSubject<Article[]>([]);
+  latestArticles$ = this._latestArticles$.asObservable();
+
   constructor() {}
 
-  public findAll(paginationParams: ArticlePaginationQueryDto) {
+  public findAll(paginationParams: ArticlePaginationQueryDto): void {
     this._articles$.next(null);
     let params = new HttpParams();
     let headers = new HttpHeaders();
@@ -46,8 +49,21 @@ export class ArticleService {
         headers: headers,
         params: params,
       })
-      .subscribe((articles: PaginatedResult<Article>) =>
-        this._articles$.next(articles)
-      );
+      .subscribe((articles: PaginatedResult<Article>) => {
+        this._articles$.next(articles);
+      });
+  }
+
+  public getLatestThree(): void {
+    let headers = new HttpHeaders();
+    headers = headers.set('show-spinner', 'false');
+
+    this.http
+      .get<Article[]>(`${environment.uri}/article/latest-three`, {
+        headers: headers,
+      })
+      .subscribe((articles: Article[]) => {
+        this._latestArticles$.next(articles);
+      });
   }
 }

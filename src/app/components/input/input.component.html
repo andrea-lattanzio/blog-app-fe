@@ -1,0 +1,15 @@
+<div class="w-30">
+    <div class="relative">
+        <input
+            type="text"
+            class="input"
+            [placeholder]="options?.placeHolder"
+            [ngClass]="{'input-with-icon-padding': options?.icon}"
+        />
+        <i
+            class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 font-bold"
+            [ngClass]="options?.icon"
+        >
+        </i>
+    </div>
+</div>

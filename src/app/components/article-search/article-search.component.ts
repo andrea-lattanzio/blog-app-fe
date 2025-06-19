@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { InputComponent, InputOptions } from '../input/input.component';
 import { NgClass } from '@angular/common';
+import { ArticleSearchInputComponent, InputOptions } from '../article-search-input/article-search-input.component';
 
 @Component({
   selector: 'app-article-search',
   standalone: true,
-  imports: [InputComponent, NgClass],
+  imports: [ArticleSearchInputComponent, NgClass],
   templateUrl: './article-search.component.html',
   styleUrl: './article-search.component.scss'
 })

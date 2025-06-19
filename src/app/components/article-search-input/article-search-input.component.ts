@@ -9,7 +9,7 @@ import {
   Output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { debounceTime, Subject, takeUntil } from 'rxjs';
+import { debounceTime, Subject } from 'rxjs';
 
 export interface InputOptions {
   placeHolder: string;
@@ -18,13 +18,13 @@ export interface InputOptions {
 }
 
 @Component({
-  selector: 'app-input',
+  selector: 'app-article-search-input',
   standalone: true,
   imports: [NgClass],
-  templateUrl: './input.component.html',
-  styleUrl: './input.component.scss',
+  templateUrl: './article-search-input.component.html',
+  styleUrl: './article-search-input.component.scss'
 })
-export class InputComponent implements OnInit {
+export class ArticleSearchInputComponent implements OnInit {
   @Input({ required: true }) options: InputOptions | null = null;
   @Output() inputValueChange = new EventEmitter<string>();
   private inputSubject = new Subject<string>();

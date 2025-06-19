@@ -51,11 +51,19 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.cdr.markForCheck();
-      this.category = params.get('category');
-      this.trigger = this.category;
-      this.articleSrv.findAll({ tag: this.category! });
+      this.refreshArticles(params.get('category'));
     });
+  }
+
+  handleSearchValueChange(value: string): void {
+    this.refreshArticles(this.category);
+  }
+
+  private refreshArticles(category: string | null): void {
+    this.cdr.markForCheck();
+    this.category = category!;
+    this.trigger = this.category;
+    this.articleSrv.findAll({ tag: this.category! });
   }
 
   /**

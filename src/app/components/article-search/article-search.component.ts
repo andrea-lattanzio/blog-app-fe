@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, output } from '@angular/core';
 import { InputComponent, InputOptions } from '../input/input.component';
 
 @Component({
@@ -12,5 +12,11 @@ export class ArticleSearchComponent {
   public searchInputOptions: InputOptions = {
     icon: "bi bi-search",
     placeHolder: "Search articles"
+  }
+  @Output() inputValueChange = new EventEmitter<string>();
+  
+
+  handleInputValueChange(value: string): void {
+    this.inputValueChange.emit(value);
   }
 }

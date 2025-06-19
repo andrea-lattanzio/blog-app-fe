@@ -7,7 +7,9 @@
     [category]="category">
   </app-article-title>
   <div class="lg:max-w-[65%] w-full">
-    <app-article-search></app-article-search>
+    <app-article-search
+      (inputValueChange)="handleSearchValueChange($event)"
+    ></app-article-search>
   </div>
   @if(articles$ | async; as articles) {
       @if (articles?.status === 'success' && articles.page.items.length) {

@@ -55,10 +55,6 @@ export class ArticlesComponent implements OnInit {
     });
   }
 
-  handleSearchValueChange(value: string): void {
-    this.refreshArticles(this.category);
-  }
-
   private refreshArticles(category: string | null): void {
     this.cdr.markForCheck();
     this.category = category!;

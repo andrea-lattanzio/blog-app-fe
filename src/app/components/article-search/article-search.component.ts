@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, output } from '@angular/core';
+import { Component } from '@angular/core';
 import { InputComponent, InputOptions } from '../input/input.component';
 import { NgClass } from '@angular/common';
 
@@ -10,13 +10,9 @@ import { NgClass } from '@angular/common';
   styleUrl: './article-search.component.scss'
 })
 export class ArticleSearchComponent {
-  public searchInputOptions: InputOptions = {
-    icon: "bi bi-search",
-    placeHolder: "Search articles"
-  }
+  public searchInputOptions: InputOptions = { icon: "bi bi-search", placeHolder: "Search articles" };
   selectedSort: "best" | "mostRecent" | "mostSeen" = "best";
   
-
   handleInputValueChange(value: string): void {
   }
 

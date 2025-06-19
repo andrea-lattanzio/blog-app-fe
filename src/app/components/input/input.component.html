@@ -2,9 +2,12 @@
     <div class="relative">
         <input
             type="text"
-            class="input"
             [placeholder]="options?.placeHolder"
-            [ngClass]="{'input-with-icon-padding': options?.icon}"
+            [ngClass]="[
+                'input',
+                options?.icon ? 'input-with-icon-padding' : '',
+                options?.styles || ''
+            ]"
             (input)="onInput($event)"
         />
         <i

@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Output, output } from '@angular/core';
 import { InputComponent, InputOptions } from '../input/input.component';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-article-search',
   standalone: true,
-  imports: [InputComponent],
+  imports: [InputComponent, NgClass],
   templateUrl: './article-search.component.html',
   styleUrl: './article-search.component.scss'
 })
@@ -13,10 +14,13 @@ export class ArticleSearchComponent {
     icon: "bi bi-search",
     placeHolder: "Search articles"
   }
-  @Output() inputValueChange = new EventEmitter<string>();
+  selectedSort: "best" | "mostRecent" | "mostSeen" = "best";
   
 
   handleInputValueChange(value: string): void {
-    this.inputValueChange.emit(value);
+  }
+
+  selectSort(sort: "best" | "mostRecent" | "mostSeen"): void {
+    this.selectedSort = sort;
   }
 }

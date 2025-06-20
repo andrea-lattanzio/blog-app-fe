@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  inject,
   OnInit,
 } from '@angular/core';
 import { AsyncPipe, NgClass } from '@angular/common';
@@ -10,7 +11,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleTitleComponent } from '../../components/article-title/article-title.component';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ArticleService } from '../../services/article.service';
+import {
+  ArticlePaginationQueryDto,
+  ArticleService,
+} from '../../services/article.service';
 import { ArticleCardSkeletonComponent } from '../../components/article-card-skeleton/article-card-skeleton.component';
 import { ArticleSearchComponent } from '../../components/article-search/article-search.component';
 
@@ -24,7 +28,7 @@ import { ArticleSearchComponent } from '../../components/article-search/article-
     ArticleTitleComponent,
     NgClass,
     ArticleCardSkeletonComponent,
-    ArticleSearchComponent
+    ArticleSearchComponent,
   ],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
@@ -39,27 +43,39 @@ import { ArticleSearchComponent } from '../../components/article-search/article-
   ],
 })
 export class ArticlesComponent implements OnInit {
-  constructor(
-    private readonly articleSrv: ArticleService,
-    private readonly route: ActivatedRoute,
-    private readonly cdr: ChangeDetectorRef
-  ) {}
+  private readonly articleSrv = inject(ArticleService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly cdr = inject(ChangeDetectorRef);
 
-  public category: string | null = null;
-  public trigger: string | null = null;
+  public category: string = '';
+  public trigger: string = '';
   public articles$ = this.articleSrv.articles$;
 
+  /**
+   * When component loads it subscribes to route parameters observable
+   * When the observable emits the articles are refreshed with a base query containing the tag only
+   * This refresh happens only when going from one page to another
+   */
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.refreshArticles(params.get('category'));
+      this.category = params.get('category')!;
     });
   }
 
-  private refreshArticles(category: string | null): void {
+  /**
+   * This method is used to refresh articles:
+   * - whenever route param changes
+   * - when articleSearchComponent emits
+   *
+   * @param query Query params to filter articles
+   */
+  refreshArticles(query: ArticlePaginationQueryDto): void {
+    // re-triggers animation
     this.cdr.markForCheck();
-    this.category = category!;
     this.trigger = this.category;
-    this.articleSrv.findAll({ tag: this.category! });
+
+    // refresh articles
+    this.articleSrv.findAll(query);
   }
 
   /**

@@ -11,8 +11,10 @@ import {
 } from './interfaces/pagination/pagination.interface';
 import { environment } from '../../environments/env';
 
-interface ArticlePaginationQueryDto extends PaginationQueryDto {
-  tag: string;
+export interface ArticlePaginationQueryDto extends PaginationQueryDto {
+  tag?: string;
+  sortBy?: string;
+  titleContains?: string;
 }
 
 @Injectable({

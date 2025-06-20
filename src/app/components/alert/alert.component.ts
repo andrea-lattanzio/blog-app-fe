@@ -53,7 +53,7 @@ export class AlertComponent {
       case 'warning':
         return 'bi-info-circle-fill';
       case 'error':
-        return 'bi-bug';
+        return 'bi bi-exclamation-diamond-fill';
       default:
         return 'bi-info-circle-fill';
     }

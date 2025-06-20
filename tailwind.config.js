@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         playfair: ['"Playfair Display"', "serif"],
         poppins: ["Poppins", "sans-serif"],
+        roboto: ["Roboto Mono", "sans-serif"],
+        dmMono: ["DM Mono", "sans-serif"],
+        space: ["Space Grotesk", "sans-serif"],
       },
       colors: {
         background: "#0a0a0a",

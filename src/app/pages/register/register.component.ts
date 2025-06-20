@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit {
       })
       .pipe(takeUntilDestroyed(this.destroyed))
       .subscribe(() => {
-        this.alertService.success('Account created! Welcome Aboard 🎉');
+        this.alertService.success('Account created! Welcome 🎉');
         this.navigate('/');
       });
     this.registerForm.reset();

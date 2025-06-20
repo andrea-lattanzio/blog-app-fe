@@ -2,17 +2,17 @@
   [@fadeIn]="trigger"
   class="pt-10 pb-14 h-auto flex flex-col items-center justify-center"
 >
-  <app-article-title
-    class="mb-8"
-    [category]="category">
-  </app-article-title>
   <div class="lg:max-w-[65%] w-full">
+    <app-article-title
+      class="mb-8"
+      [category]="category">
+    </app-article-title>
     <app-article-search (inputValueChange)="refreshArticles($event)">
     </app-article-search>
   </div>
   @if(articles$ | async; as articles) {
       @if (articles?.status === 'success' && articles.page.items.length) {
-          <div class="mt-5 grid gap-4 md:grid-cols-2 md:gap-8 lg:max-w-[65%] w-full mx-auto">
+          <div class="mt-12 grid gap-2 md:grid-cols-2 md:gap-5 lg:max-w-[65%] w-full mx-auto">
               @for (article of articles?.page?.items; track article.id) {
                 <app-article-card [article]="article" />
               }

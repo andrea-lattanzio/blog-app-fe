@@ -5,21 +5,21 @@
   ></app-article-search-input>
   <div class="hidden lg:flex gap-2">
     <button
-      class="h-100 px-4 flex items-center justify-center rounded-md border border-1 border-[#afafaf] gap-2"
+      class="h-100 px-4 flex items-center justify-center rounded-md border-2 border-[#373737] gap-2"
       (click)="selectSort('best')"
       [ngClass]="{ 'selected-sort': selectedSort === 'best' }"
     >
       <span class="font-poppins font-[500] text-[#cdcdcd4a]">Best</span>
     </button>
     <button
-      class="h-100 py-1 px-2 flex items-center justify-center rounded-md border border-1 border-[#afafaf] gap-2"
+      class="h-100 py-1 px-2 flex items-center justify-center rounded-md border-2 border-[#373737] gap-2"
       (click)="selectSort('mostRecent')"
       [ngClass]="{ 'selected-sort': selectedSort === 'mostRecent' }"
     >
       <span class="font-poppins font-[500] text-[#cdcdcd4a]">Most recent</span>
     </button>
     <button
-      class="h-100 py-1 px-2 flex items-center justify-center rounded-md border border-1 border-[#afafaf] gap-2"
+      class="h-100 py-1 px-2 flex items-center justify-center rounded-md border-2 border-[#373737] gap-2"
       (click)="selectSort('mostSeen')"
       [ngClass]="{ 'selected-sort': selectedSort === 'mostSeen' }"
     >

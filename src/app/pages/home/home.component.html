@@ -19,7 +19,7 @@
   <div class="mt-5 w-20 h-1 bg-gray-400 rounded-full mx-auto my-4"></div>
   <div class="mt-5 flex flex-col items-center space-y-4 lg:w-96 w-full">
     @if(articles$ | async; as articles) {
-      @if (articles.length > 0) {
+      @if (articles.length) {
           @for (article of articles; track article.id) {
             <app-article-card [article]="article" />
           }

@@ -1,10 +1,10 @@
-<div class="cursor-pointer p-4 h-48 w-full border-2 rounded-md border-[#858585] overflow-hidden flex flex-col font-playfair transition-transform duration-300 delay-100 sm:hover:-translate-x-0 sm:hover:-translate-y-0 lg:hover:-translate-x-1 lg:hover:-translate-y-1 relative group">
+<div class="cursor-pointer p-4 h-48 w-full border-2 rounded-md border-[#373737] overflow-hidden flex flex-col font-playfair transition-transform duration-300 delay-100 sm:hover:-translate-x-0 sm:hover:-translate-y-0 lg:hover:-translate-x-1 lg:hover:-translate-y-1 relative group">
   <div class="flex flex-col items-start relative z-0"> 
     <h1 class="text-xl tracking-widetruncate text-ellipsis w-[95%]">{{article.title}}</h1>
     <span class="mt-2 text-sm font-light">{{article.updatedAt | date}}</span>
     <div class="w-20 h-0.5 bg-gray-400 rounded-full my-4"></div>
   </div>
-  <p class="overflow-hidden text-ellipsis line-clamp-3 relative z-0"> {{article.description}}
+  <p class="overflow-hidden text-ellipsis text-secondaryText line-clamp-3 relative z-0"> {{article.description}}
   </p>
   <div class="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black via-transparent to-transparent z-20 opacity-100"></div>
 </div>

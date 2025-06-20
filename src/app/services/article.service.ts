@@ -30,7 +30,7 @@ export class ArticleService {
   );
   articles$ = this._articles$.asObservable();
 
-  private _latestArticles$ = new BehaviorSubject<Article[]>([]);
+  private _latestArticles$ = new BehaviorSubject<Article[] | null>(null);
   latestArticles$ = this._latestArticles$.asObservable();
 
   constructor() {}
@@ -57,6 +57,7 @@ export class ArticleService {
   }
 
   public getLatestThree(): void {
+    this._latestArticles$.next(null);
     let headers = new HttpHeaders();
     headers = headers.set('show-spinner', 'false');
 

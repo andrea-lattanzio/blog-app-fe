@@ -1,14 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ButtonComponent } from '../../components/button/button.component';
-import {
-  FormGroup,
-  FormsModule,
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
-import { FormErrorComponent } from '../../components/form-error/form-error.component';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { ArticleService } from '../../services/article.service';
 import { ArticleCardSkeletonComponent } from '../../components/article-card-skeleton/article-card-skeleton.component';
@@ -20,9 +11,6 @@ import { JoinNewsletterComponent } from '../../components/join-newsletter/join-n
   standalone: true,
   imports: [
     ButtonComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    FormErrorComponent,
     ArticleCardComponent,
     ArticleCardSkeletonComponent,
     AsyncPipe,

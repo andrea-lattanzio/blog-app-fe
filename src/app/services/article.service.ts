@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { AlertService } from './alert.service';
-import { User } from './interfaces/auth.service.interfaces';
 import { Article } from './interfaces/article/article.interface';
 import { BehaviorSubject } from 'rxjs';
 import {

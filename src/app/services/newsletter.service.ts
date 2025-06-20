@@ -1,8 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { JwtService } from './jwt.service';
 import { AlertService } from './alert.service';
 import { Router } from '@angular/router';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 import { environment } from '../../environments/env';
 import { HttpClient } from '@angular/common/http';
 
@@ -16,7 +15,6 @@ export interface CreateNewsletterSubscriptionDto {
 export class NewsletterService {
   private readonly http = inject(HttpClient);
   private readonly alertSrv = inject(AlertService);
-  private readonly router = inject(Router);
 
   public createSub(requestBody: CreateNewsletterSubscriptionDto) {
     return this.http

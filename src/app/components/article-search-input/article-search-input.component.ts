@@ -12,6 +12,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, Subject } from 'rxjs';
 
 export interface InputOptions {
+  value?: string;
   placeHolder: string;
   icon: string;
   styles?: string;

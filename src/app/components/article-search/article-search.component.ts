@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ArticleSearchComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   public searchInputOptions: InputOptions = { icon: "bi bi-search", placeHolder: "Search articles", value: "" };
-  selectedSort: "best" | "mostRecent" | "mostSeen" = "best";
+  selectedSort: "best" | "mostRecent" | "mostSeen" = "mostRecent";
   query: ArticlePaginationQueryDto = { sortBy: this.selectedSort };
   @Output() inputValueChange = new EventEmitter<ArticlePaginationQueryDto>();
   public category: string = '';
@@ -40,7 +40,7 @@ export class ArticleSearchComponent implements OnInit {
 
   private reset(): void {
     // reset filters
-    this.selectedSort = "best";
+    this.selectedSort = "mostRecent";
     this.searchInputOptions.value = "";
 
     // reset query

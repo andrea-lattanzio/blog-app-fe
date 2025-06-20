@@ -10,11 +10,16 @@ import {
   Validators,
 } from '@angular/forms';
 import { FormErrorComponent } from '../form-error/form-error.component';
+import { NewsletterService } from '../../services/newsletter.service';
+import { AlertService } from '../../services/alert.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-join-newsletter',
   standalone: true,
   imports: [
+    CommonModule,
     ButtonComponent,
     FormsModule,
     ReactiveFormsModule,
@@ -28,13 +33,14 @@ export class JoinNewsletterComponent implements OnInit {
     SUBSCRIBE_BUTTON_OPTIONS;
   private readonly fb = inject(NonNullableFormBuilder);
   subscribeForm!: FormGroup;
+  private readonly newsletterSrv = inject(NewsletterService);
+  private readonly alertSrv = inject(AlertService);
   private readonly destroyed = inject(DestroyRef);
 
   ngOnInit(): void {
     this.subscribeForm = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required]],
       },
       {
         updateOn: 'submit',
@@ -43,8 +49,11 @@ export class JoinNewsletterComponent implements OnInit {
   }
 
   handleSubscription(): void {
-    if(this.subscribeForm.invalid) return;
-    // TODO richiamo metodo del service per aggiungere mail alla mailing list
+    if (this.subscribeForm.invalid) return;
+    this.newsletterSrv
+      .createSub({ ...this.subscribeForm.value })
+      .pipe(takeUntilDestroyed(this.destroyed))
+      .subscribe(() => this.alertSrv.success('You subscribed succesfully! 🤗'));
     this.subscribeForm.reset();
   }
 

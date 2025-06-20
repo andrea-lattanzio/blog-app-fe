@@ -67,6 +67,7 @@ export const CONFIRM_BUTTON_OPTIONS: ButtonOptions = {
 }
 
 export const SUBSCRIBE_BUTTON_OPTIONS: ButtonOptions = {
+  type: 'submit',
   text: 'Subscribe',
   styles: 'w-full font-poppins color bg-secondLayerBg',
 }

@@ -71,7 +71,7 @@ export class ArticleService {
       .get<Article[]>(`${environment.uri}/article/latest-three`, { headers: headers })
       .pipe(
         catchError((err) => {
-          this.alertSrv.error("Unable to load articles");
+          this.alertSrv.error(err.error.message);
           return throwError(() => err);
         })
       )
@@ -90,12 +90,28 @@ export class ArticleService {
       .pipe(
         catchError((err) => {
           console.log(err);
-          this.alertSrv.error("Unable to load this article");
+          this.alertSrv.error(err.error.message);
           return throwError(() => err);
         })
       )
       .subscribe((article: Article) => {
         this._fullArticle$.next(article);
       });
+  }
+
+  public like(articleId: string): void {
+    let headers = new HttpHeaders();
+    headers = headers.set('show-spinner', 'false');
+
+    this.http
+      .get<void>(`${environment.uri}/article/like/${articleId}`, { headers: headers })
+      .pipe(
+        catchError((err) => {
+          console.log(err);
+          this.alertSrv.error("Unable to like this article");
+          return throwError(() => err);
+        })
+      )
+      .subscribe((_) => {});
   }
 }

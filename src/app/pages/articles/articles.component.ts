@@ -8,7 +8,7 @@ import {
 import { AsyncPipe, NgClass } from '@angular/common';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleTitleComponent } from '../../components/article-title/article-title.component';
 import { animate, style, transition, trigger } from '@angular/animations';
 import {
@@ -43,13 +43,14 @@ import { ArticleSearchComponent } from '../../components/article-search/article-
   ],
 })
 export class ArticlesComponent implements OnInit {
-  private readonly articleSrv = inject(ArticleService);
-  private readonly route = inject(ActivatedRoute);
-  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly articleSrv = inject(ArticleService); // to fetch articles
+  private readonly route = inject(ActivatedRoute); // takes current path param
+  private readonly cdr = inject(ChangeDetectorRef); // trigger change detection
+  private readonly router = inject(Router); // navigates to article detail
 
   public category: string = '';
   public trigger: string = '';
-  public articles$ = this.articleSrv.articles$;
+  public articles$ = this.articleSrv.articles$; // article observable
 
   /**
    * When component loads it subscribes to route parameters observable
@@ -76,6 +77,10 @@ export class ArticlesComponent implements OnInit {
 
     // refresh articles
     this.articleSrv.findAll(query);
+  }
+
+  handleArticleClick(articleId: string): void {
+    this.router.navigate([`article/${articleId}`]);
   }
 
   /**

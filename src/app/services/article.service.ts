@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { AlertService } from './alert.service';
 import { Article } from './interfaces/article/article.interface';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import {
   PaginationQueryDto,
   PaginatedResult,
@@ -32,7 +32,7 @@ export class ArticleService {
   private _latestArticles$ = new BehaviorSubject<Article[] | null>(null);
   latestArticles$ = this._latestArticles$.asObservable();
 
-  constructor() {}
+  constructor() { }
 
   public findAll(paginationParams: ArticlePaginationQueryDto): void {
     this._articles$.next(null);
@@ -50,6 +50,12 @@ export class ArticleService {
         headers: headers,
         params: params,
       })
+      .pipe(
+        catchError((err) => {
+          this.alertSrv.error("Unable to load articles");
+          return throwError(() => err);
+        })
+      )
       .subscribe((articles: PaginatedResult<Article>) => {
         this._articles$.next(articles);
       });

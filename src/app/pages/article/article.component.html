@@ -1,4 +1,22 @@
-@if(article$ | async; as article) {
+@if(article) {
 <div [@fadeIn]>
+  <div
+    class="pt-16 flex flex-col items-center w-full md:w-[65%] lg:w-[40%] mx-auto"
+  >
+    <!-- title -->
+    <div class="text-3xl tracking-wide font-playfair text-primaryText">{{article.title}}</div>
+    <div class="mt-5 text-secondaryText">{{article.description}}</div>
+    <div class="mt-5 flex items-center justify-start w-full gap-3">
+      <div class="bg-firstLayerBg h-8 w-8 rounded-full flex items-center justify-center">
+        <span class="text-secondaryText">{{getFirstLetter(article.author?.name)}}</span>
+      </div>
+      <span class="text-secondaryText font-semibold">{{article.author?.name}} {{article.author?.lastname}}</span>
+      <span class="h-6 border-l border-secondaryText mx-2"></span>
+      <div class="h-auto flex items-center">
+        <i class="icon bi bi-heart-fill cursor-pointer" (click)="handleLike()"></i>
+        <span class="text-secondaryText text-sm font-semibold">{{likes}}</span>
+      </div>
+    </div>
+  </div>
 </div>
 }

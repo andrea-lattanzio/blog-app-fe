@@ -3,17 +3,25 @@ import { inject, Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { AlertService } from './alert.service';
 import { Article } from './interfaces/article/article.interface';
-import { BehaviorSubject, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import {
   PaginationQueryDto,
   PaginatedResult,
 } from './interfaces/pagination/pagination.interface';
 import { environment } from '../../environments/env';
+import { Chapter } from './interfaces/article/chapter.interface';
 
 export interface ArticlePaginationQueryDto extends PaginationQueryDto {
   tag?: string;
   sortBy?: string;
   titleContains?: string;
+}
+
+export interface UpdateArticleDto {
+  title?: string;
+  description?: string;
+  likes?: number;
+  chapters?: Chapter;
 }
 
 @Injectable({
@@ -99,19 +107,17 @@ export class ArticleService {
       });
   }
 
-  public like(articleId: string): void {
+  public update(articleId: string, updatedData: UpdateArticleDto): Observable<Article> {
     let headers = new HttpHeaders();
     headers = headers.set('show-spinner', 'false');
 
-    this.http
-      .get<void>(`${environment.uri}/article/like/${articleId}`, { headers: headers })
+    return this.http
+      .patch<Article>(`${environment.uri}/article/${articleId}`, updatedData)
       .pipe(
         catchError((err) => {
-          console.log(err);
-          this.alertSrv.error("Unable to like this article");
+          this.alertSrv.error(err.error.message);
           return throwError(() => err);
         })
-      )
-      .subscribe((_) => {});
+      );
   }
 }

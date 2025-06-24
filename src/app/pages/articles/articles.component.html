@@ -12,13 +12,13 @@
   </div>
   @if(articles$ | async; as articles) {
       @if (articles?.status === 'success' && articles.page.items.length) {
-          <div class="mt-12 grid gap-2 md:grid-cols-2 md:gap-5 lg:max-w-[65%] w-full mx-auto">
-              @for (article of articles?.page?.items; track article.id) {
-                <div (click)="handleArticleClick(article.id)">
-                  <app-article-card [article]="article" />
-                </div>
-              }
-          </div>
+        <div class="mt-12 grid gap-4 md:grid-cols-2 md:gap-4 gap-y-5 lg:max-w-[65%] w-full mx-auto">
+          @for (article of articles?.page?.items; track article.id) {
+            <div (click)="handleArticleClick(article.id)">
+              <app-article-card [article]="article" />
+            </div>
+          }
+        </div>
       } @else {
         <div class="mt-20 rounded-md border-secondLayerBg flex flex-col items-center justify-center lg:w-96 w-full p-6">
           <mat-icon svgIcon="empty" class="mat-icon"></mat-icon>

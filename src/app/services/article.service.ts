@@ -20,7 +20,6 @@ export interface ArticlePaginationQueryDto extends PaginationQueryDto {
 export interface UpdateArticleDto {
   title?: string;
   description?: string;
-  likes?: number;
   chapters?: Chapter;
 }
 
@@ -108,11 +107,22 @@ export class ArticleService {
   }
 
   public update(articleId: string, updatedData: UpdateArticleDto): Observable<Article> {
+    return this.http
+      .patch<Article>(`${environment.uri}/article/${articleId}`, updatedData)
+      .pipe(
+        catchError((err) => {
+          this.alertSrv.error(err.error.message);
+          return throwError(() => err);
+        })
+      );
+  }
+
+  public likeArticle(articleId: string): Observable<Article> {
     let headers = new HttpHeaders();
     headers = headers.set('show-spinner', 'false');
 
     return this.http
-      .patch<Article>(`${environment.uri}/article/${articleId}`, updatedData)
+      .post<Article>(`${environment.uri}/article/like/${articleId}`, { headers })
       .pipe(
         catchError((err) => {
           this.alertSrv.error(err.error.message);

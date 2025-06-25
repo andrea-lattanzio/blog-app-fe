@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ArticleService, UpdateArticleDto } from '../../services/article.service';
+import { ArticleService } from '../../services/article.service';
 import { AuthService } from '../../services/auth.service';
 import { Article } from '../../services/interfaces/article/article.interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -40,7 +40,7 @@ export class ArticleComponent implements OnInit {
         .pipe(takeUntilDestroyed(this.destroyed))
         .subscribe((article: Article | null) => {
           this.article = article;
-          this.likes = this.article?.likes!;
+          this.likes = this.article?._count?.likes!;
         });
     });
   }
@@ -50,7 +50,6 @@ export class ArticleComponent implements OnInit {
   }
 
   handleLike(): void {
-    const likeArticleDto: UpdateArticleDto = { likes: this.likes + 1 };
-    this.articleSrv.update(this.articleId!, likeArticleDto).subscribe((_) => { this.likes++; });
+    this.articleSrv.likeArticle(this.articleId!).subscribe((_) => { this.likes++; });
   }
 }

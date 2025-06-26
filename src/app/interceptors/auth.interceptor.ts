@@ -20,6 +20,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   return next(authToken ? authReq : req).pipe(
     catchError((error) => {
       if (error.status === 401) {
+        jwtSrv.removeToken();
         router.navigate(['/login']);
       }
       return throwError(() => null);

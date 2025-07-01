@@ -89,9 +89,11 @@ export class ArticleService {
 
   public getFullArticle(articleId: string): void {
     this._fullArticle$.next(null);
+    let headers = new HttpHeaders();
+    headers = headers.set('show-spinner', 'false');
 
     this.http
-      .get<Article>(`${environment.uri}/article/${articleId}`)
+      .get<Article>(`${environment.uri}/article/${articleId}`, { headers: headers })
       .pipe(
         catchError((err) => {
           console.log(err);

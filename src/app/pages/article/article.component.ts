@@ -6,11 +6,12 @@ import { AuthService } from '../../services/auth.service';
 import { Article } from '../../services/interfaces/article/article.interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgClass } from '@angular/common';
+import { ArticleSkeletonComponent } from '../../components/article-skeleton/article-skeleton.component';
 
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, ArticleSkeletonComponent],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
   animations: [

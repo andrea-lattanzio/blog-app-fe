@@ -16,7 +16,6 @@ import { authInterceptor } from './interceptors/auth.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withPreloading(PreloadAllModules)),
-    HttpClientModule,
     provideHttpClient(withInterceptors([authInterceptor, loadingInterceptor])),
     BrowserModule,
     importProvidersFrom(MatNativeDateModule),

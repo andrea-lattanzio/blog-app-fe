@@ -10,17 +10,6 @@
   },
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "@angular/animations": "^19.2.14",
-    "@angular/common": "^19.2.14",
-    "@angular/compiler": "^19.2.14",
-    "@angular/core": "^19.2.14",
-    "@angular/forms": "^19.2.14",
-    "@angular/material": "^18.2.14",
-    "@angular/platform-browser": "^19.2.14",
-    "@angular/platform-browser-dynamic": "^19.2.14",
-    "@angular/router": "^19.2.14",
-=======
     "@angular/animations": "^18.2.13",
     "@angular/common": "^18.2.13",
     "@angular/compiler": "^18.2.13",
@@ -30,7 +19,6 @@
     "@angular/platform-browser": "^18.2.13",
     "@angular/platform-browser-dynamic": "^18.2.13",
     "@angular/router": "^18.2.13",
->>>>>>> parent of 2d81050 (build(migrate to angular 20): minor changes from angula 18 to angular 19)
     "animate.css": "^4.1.1",
     "bootstrap-icons": "^1.11.3",
     "rxjs": "~7.8.0",

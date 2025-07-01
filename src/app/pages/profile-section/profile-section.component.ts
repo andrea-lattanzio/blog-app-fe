@@ -14,11 +14,10 @@ import ConfirmDeleteDialogComponent from '../../components/confirm-delete-dialog
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-profile-section',
-  standalone: true,
-  imports: [ButtonComponent, MatDialogModule, CommonModule],
-  templateUrl: './profile-section.component.html',
-  styleUrl: './profile-section.component.scss',
+    selector: 'app-profile-section',
+    imports: [ButtonComponent, MatDialogModule, CommonModule],
+    templateUrl: './profile-section.component.html',
+    styleUrl: './profile-section.component.scss'
 })
 export class ProfileSectionComponent {
   @Input() user!: User | null;

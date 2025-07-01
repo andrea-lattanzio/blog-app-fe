@@ -20,17 +20,16 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ButtonComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    FormErrorComponent,
-  ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+    selector: 'app-login',
+    imports: [
+        CommonModule,
+        ButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        FormErrorComponent,
+    ],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
   private readonly router = inject(Router);

@@ -22,17 +22,16 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ButtonComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    FormErrorComponent,
-  ],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss',
+    selector: 'app-register',
+    imports: [
+        CommonModule,
+        ButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        FormErrorComponent,
+    ],
+    templateUrl: './register.component.html',
+    styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit {
   private readonly router = inject(Router);

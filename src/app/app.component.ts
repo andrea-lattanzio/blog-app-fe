@@ -10,17 +10,16 @@ import { CommonModule } from '@angular/common';
 import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    NavbarComponent,
-    SpinnerComponent,
-    CommonModule,
-    AlertComponent,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        NavbarComponent,
+        SpinnerComponent,
+        CommonModule,
+        AlertComponent,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   title = 'blog-app-fe';

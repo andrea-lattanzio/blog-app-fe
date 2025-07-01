@@ -4,11 +4,10 @@ import { ARTICLE_TITLE_CONFIGS, ArticleTitleConfiguration } from './article.titl
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-article-title',
-  standalone: true,
-  imports: [MatIconModule, NgClass],
-  templateUrl: './article-title.component.html',
-  styleUrl: './article-title.component.scss',
+    selector: 'app-article-title',
+    imports: [MatIconModule, NgClass],
+    templateUrl: './article-title.component.html',
+    styleUrl: './article-title.component.scss'
 })
 export class ArticleTitleComponent {
   @Input({ required: true }) category: string | null = null;

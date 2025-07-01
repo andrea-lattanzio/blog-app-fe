@@ -5,7 +5,7 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import { AsyncPipe, NgClass } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,7 +25,6 @@ import { ArticleSearchComponent } from '../../components/article-search/article-
         ArticleCardComponent,
         MatIconModule,
         ArticleTitleComponent,
-        NgClass,
         ArticleCardSkeletonComponent,
         ArticleSearchComponent,
     ],

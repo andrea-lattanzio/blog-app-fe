@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-navlinks',
-    imports: [RouterLink],
+    imports: [],
     templateUrl: './navlinks.component.html',
     styleUrl: './navlinks.component.scss'
 })

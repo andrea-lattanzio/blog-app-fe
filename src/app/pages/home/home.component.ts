@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ButtonComponent } from '../../components/button/button.component';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { ArticleService } from '../../services/article.service';
 import { ArticleCardSkeletonComponent } from '../../components/article-card-skeleton/article-card-skeleton.component';
@@ -9,7 +8,6 @@ import { JoinNewsletterComponent } from '../../components/join-newsletter/join-n
 @Component({
     selector: 'app-home',
     imports: [
-        ButtonComponent,
         ArticleCardComponent,
         ArticleCardSkeletonComponent,
         AsyncPipe,

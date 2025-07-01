@@ -1,4 +1,4 @@
-import { AsyncPipe, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,7 +20,7 @@ interface AlertClasses {
 
 @Component({
     selector: 'app-alert',
-    imports: [AsyncPipe, NgClass],
+    imports: [NgClass],
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './alert.component.html',
     styleUrl: './alert.component.scss'

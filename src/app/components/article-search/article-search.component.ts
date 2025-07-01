@@ -5,10 +5,11 @@ import { ArticlePaginationQueryDto } from '../../services/article.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'app-article-search',
-    imports: [ArticleSearchInputComponent, NgClass],
-    templateUrl: './article-search.component.html',
-    styleUrl: './article-search.component.scss'
+  selector: 'app-article-search',
+  standalone: true,
+  imports: [ArticleSearchInputComponent, NgClass],
+  templateUrl: './article-search.component.html',
+  styleUrl: './article-search.component.scss'
 })
 export class ArticleSearchComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);

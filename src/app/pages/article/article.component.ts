@@ -10,18 +10,19 @@ import { ArticleSkeletonComponent } from '../../components/article-skeleton/arti
 import { ArticleChapterComponent } from '../../components/article-chapter/article-chapter.component';
 
 @Component({
-    selector: 'app-article',
-    imports: [NgClass, ArticleSkeletonComponent, ArticleChapterComponent],
-    templateUrl: './article.component.html',
-    styleUrl: './article.component.scss',
-    animations: [
-        trigger('fadeIn', [
-            transition(':enter, * => *', [
-                style({ opacity: 0 }),
-                animate('1200ms ease-in-out', style({ opacity: 1 })),
-            ]),
-        ]),
-    ]
+  selector: 'app-article',
+  standalone: true,
+  imports: [NgClass, ArticleSkeletonComponent, ArticleChapterComponent],
+  templateUrl: './article.component.html',
+  styleUrl: './article.component.scss',
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter, * => *', [
+        style({ opacity: 0 }),
+        animate('1200ms ease-in-out', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class ArticleComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);

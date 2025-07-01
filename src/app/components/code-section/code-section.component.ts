@@ -4,10 +4,11 @@ import { codeToHtml } from 'shiki';
 import { CodeSection } from '../../services/interfaces/article/codesection.interface';
 
 @Component({
-    selector: 'app-code-section',
-    imports: [],
-    templateUrl: './code-section.component.html',
-    styleUrl: './code-section.component.scss'
+  selector: 'app-code-section',
+  standalone: true,
+  imports: [],
+  templateUrl: './code-section.component.html',
+  styleUrl: './code-section.component.scss',
 })
 export class CodeSectionComponent implements OnInit {
   @Input({ required: true }) codeSection!: CodeSection | null;

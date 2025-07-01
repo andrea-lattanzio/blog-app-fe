@@ -19,10 +19,11 @@ export interface InputOptions {
 }
 
 @Component({
-    selector: 'app-article-search-input',
-    imports: [NgClass],
-    templateUrl: './article-search-input.component.html',
-    styleUrl: './article-search-input.component.scss'
+  selector: 'app-article-search-input',
+  standalone: true,
+  imports: [NgClass],
+  templateUrl: './article-search-input.component.html',
+  styleUrl: './article-search-input.component.scss'
 })
 export class ArticleSearchInputComponent implements OnInit {
   @Input({ required: true }) options: InputOptions | null = null;

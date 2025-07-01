@@ -19,27 +19,28 @@ import { ArticleCardSkeletonComponent } from '../../components/article-card-skel
 import { ArticleSearchComponent } from '../../components/article-search/article-search.component';
 
 @Component({
-    selector: 'app-articles',
-    imports: [
-        AsyncPipe,
-        ArticleCardComponent,
-        MatIconModule,
-        ArticleTitleComponent,
-        NgClass,
-        ArticleCardSkeletonComponent,
-        ArticleSearchComponent,
-    ],
-    templateUrl: './articles.component.html',
-    styleUrl: './articles.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [
-        trigger('fadeIn', [
-            transition(':enter, * => *', [
-                style({ opacity: 0 }),
-                animate('1200ms ease-in-out', style({ opacity: 1 })),
-            ]),
-        ]),
-    ]
+  selector: 'app-articles',
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    ArticleCardComponent,
+    MatIconModule,
+    ArticleTitleComponent,
+    NgClass,
+    ArticleCardSkeletonComponent,
+    ArticleSearchComponent,
+  ],
+  templateUrl: './articles.component.html',
+  styleUrl: './articles.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter, * => *', [
+        style({ opacity: 0 }),
+        animate('1200ms ease-in-out', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class ArticlesComponent implements OnInit {
   private readonly articleSrv = inject(ArticleService); // to fetch articles

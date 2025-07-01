@@ -17,7 +17,6 @@ export interface User {
   name: string;
   lastname: string;
   fullname: string;
-  username: string;
   email: string;
   created: string;
 }

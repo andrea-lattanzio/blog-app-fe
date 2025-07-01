@@ -11,11 +11,15 @@ import { loadingInterceptor } from './interceptors/loading.interceptor';
 import { MatNativeDateModule } from '@angular/material/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { authInterceptor } from './interceptors/auth.interceptor';
+import { provideHighlightOptions } from 'ngx-highlightjs';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withPreloading(PreloadAllModules)),
+    provideHighlightOptions({
+      fullLibraryLoader: () => import('highlight.js')
+    }),
     provideHttpClient(withInterceptors([authInterceptor, loadingInterceptor])),
     BrowserModule,
     importProvidersFrom(MatNativeDateModule),

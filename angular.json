@@ -38,7 +38,8 @@
               "src/styles.scss",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/animate.css/animate.min.css",
-              "@angular/material/prebuilt-themes/indigo-pink.css"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/highlight.js/styles/tokyo-night-dark.css"
             ],
             "scripts": []
           },

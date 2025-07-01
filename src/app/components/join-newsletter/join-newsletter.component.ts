@@ -13,16 +13,17 @@ import { FormErrorComponent } from '../form-error/form-error.component';
 import { NewsletterService } from '../../services/newsletter.service';
 import { AlertService } from '../../services/alert.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-join-newsletter',
     imports: [
-    ButtonComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    FormErrorComponent
-],
+        CommonModule,
+        ButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        FormErrorComponent,
+    ],
     templateUrl: './join-newsletter.component.html',
     styleUrl: './join-newsletter.component.scss'
 })

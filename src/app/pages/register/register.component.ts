@@ -9,7 +9,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-
+import { CommonModule } from '@angular/common';
 import { FormErrorComponent } from '../../components/form-error/form-error.component';
 import { AuthService } from '../../services/auth.service';
 import { RegisterRequestBody } from '../../services/interfaces/auth.service.interfaces';
@@ -24,11 +24,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
     selector: 'app-register',
     imports: [
-    ButtonComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    FormErrorComponent
-],
+        CommonModule,
+        ButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        FormErrorComponent,
+    ],
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss'
 })

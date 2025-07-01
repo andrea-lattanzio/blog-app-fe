@@ -13,7 +13,11 @@
       <span class="text-secondaryText font-semibold">{{article.author?.name}} {{article.author?.lastname}}</span>
       <span class="h-6 border-l border-secondaryText mx-2"></span>
       <div class="h-auto flex items-center">
-        <i class="icon bi bi-heart-fill cursor-pointer" (click)="handleLike()"></i>
+        <i
+          class="icon bi bi-heart-fill cursor-pointer"
+          [ngClass]="liked ? '!text-red-500' : ''"
+          (click)="handleLike()">
+        </i>
         <span class="text-secondaryText text-sm font-semibold">{{likes}}</span>
       </div>
     </div>

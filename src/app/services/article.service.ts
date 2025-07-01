@@ -89,11 +89,9 @@ export class ArticleService {
 
   public getFullArticle(articleId: string): void {
     this._fullArticle$.next(null);
-    let headers = new HttpHeaders();
-    headers = headers.set('show-spinner', 'false');
 
     this.http
-      .get<Article>(`${environment.uri}/article/${articleId}`, { headers: headers })
+      .get<Article>(`${environment.uri}/article/${articleId}`)
       .pipe(
         catchError((err) => {
           console.log(err);
@@ -117,12 +115,20 @@ export class ArticleService {
       );
   }
 
-  public likeArticle(articleId: string): Observable<Article> {
-    let headers = new HttpHeaders();
-    headers = headers.set('show-spinner', 'false');
-
+  public addLike(articleId: string): Observable<void> {
     return this.http
-      .post<Article>(`${environment.uri}/article/like/${articleId}`, { headers })
+      .post<void>(`${environment.uri}/article/like/${articleId}`, null)
+      .pipe(
+        catchError((err) => {
+          this.alertSrv.error(err.error.message);
+          return throwError(() => err);
+        })
+      );
+  }
+
+  public removeLike(articleId: string): Observable<void> {
+    return this.http
+      .delete<void>(`${environment.uri}/article/like/${articleId}`)
       .pipe(
         catchError((err) => {
           this.alertSrv.error(err.error.message);

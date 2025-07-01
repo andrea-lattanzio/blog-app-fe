@@ -5,11 +5,12 @@ import { ArticleService } from '../../services/article.service';
 import { AuthService } from '../../services/auth.service';
 import { Article } from '../../services/interfaces/article/article.interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
   animations: [
@@ -31,6 +32,7 @@ export class ArticleComponent implements OnInit {
   public article!: Article | null;
   private articleId!: string | null;
   public likes: number = 0;
+  public liked!: boolean | null;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -41,6 +43,7 @@ export class ArticleComponent implements OnInit {
         .subscribe((article: Article | null) => {
           this.article = article;
           this.likes = this.article?._count?.likes!;
+          this.liked = this.article?.liked!;
         });
     });
   }
@@ -50,6 +53,16 @@ export class ArticleComponent implements OnInit {
   }
 
   handleLike(): void {
-    this.articleSrv.likeArticle(this.articleId!).subscribe((_) => { this.likes++; });
+    if (this.liked) {
+      this.articleSrv.removeLike(this.articleId!).subscribe(() => {
+        this.likes--;
+        this.liked = false;
+      });
+    } else if (!this.liked) {
+      this.articleSrv.addLike(this.articleId!).subscribe(() => {
+        this.likes++;
+        this.liked = true;
+      });
+    }
   }
 }

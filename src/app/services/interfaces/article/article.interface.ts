@@ -8,6 +8,7 @@ export interface Article {
     tag: string;
     updatedAt: Date;
     author?: User;
+    liked: boolean;
     views: number;
     _count?: { likes: number };
     chapters?: Chapter[];

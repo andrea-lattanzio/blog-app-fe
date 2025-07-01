@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input, input, OnInit } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
 
 @Component({
     selector: 'app-form-error',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './form-error.component.html',
     styleUrl: './form-error.component.scss'
 })

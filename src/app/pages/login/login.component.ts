@@ -10,7 +10,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { FormErrorComponent } from '../../components/form-error/form-error.component';
-import { CommonModule } from '@angular/common';
+
 import { AuthService } from '../../services/auth.service';
 import { LoginRequestBody } from '../../services/interfaces/auth.service.interfaces';
 import {
@@ -22,12 +22,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
     selector: 'app-login',
     imports: [
-        CommonModule,
-        ButtonComponent,
-        FormsModule,
-        ReactiveFormsModule,
-        FormErrorComponent,
-    ],
+    ButtonComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    FormErrorComponent
+],
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss'
 })

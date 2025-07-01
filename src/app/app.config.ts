@@ -5,11 +5,7 @@ import {
   withPreloading,
 } from '@angular/router';
 import { routes } from './app.routes';
-import {
-  HttpClientModule,
-  provideHttpClient,
-  withInterceptors,
-} from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
 import { MatNativeDateModule } from '@angular/material/core';

@@ -7,11 +7,12 @@ import { Article } from '../../services/interfaces/article/article.interface';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgClass } from '@angular/common';
 import { ArticleSkeletonComponent } from '../../components/article-skeleton/article-skeleton.component';
+import { ArticleChapterComponent } from '../../components/article-chapter/article-chapter.component';
 
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [NgClass, ArticleSkeletonComponent],
+  imports: [NgClass, ArticleSkeletonComponent, ArticleChapterComponent],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
   animations: [

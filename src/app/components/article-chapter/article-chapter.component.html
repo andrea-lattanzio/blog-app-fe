@@ -1,0 +1,7 @@
+<div class="pt-20 w-full">
+    <!-- chapter title -->
+    <span class="text-2xl font-semibold font-playfair">{{chapter?.title}}</span>
+    @for(paragraph of chapter?.paragraphs; track $index) {
+        <app-article-paragraph [paragraph]="paragraph"></app-article-paragraph>
+    }
+</div>

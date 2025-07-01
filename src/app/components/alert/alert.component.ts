@@ -19,12 +19,11 @@ interface AlertClasses {
 }
 
 @Component({
-  selector: 'app-alert',
-  standalone: true,
-  imports: [AsyncPipe, NgClass],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './alert.component.html',
-  styleUrl: './alert.component.scss',
+    selector: 'app-alert',
+    imports: [AsyncPipe, NgClass],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './alert.component.html',
+    styleUrl: './alert.component.scss'
 })
 export class AlertComponent {
   @Input({ required: true }) alerts: Alert[] | null = [];

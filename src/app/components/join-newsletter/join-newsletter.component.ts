@@ -16,17 +16,16 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-join-newsletter',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ButtonComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    FormErrorComponent,
-  ],
-  templateUrl: './join-newsletter.component.html',
-  styleUrl: './join-newsletter.component.scss',
+    selector: 'app-join-newsletter',
+    imports: [
+        CommonModule,
+        ButtonComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        FormErrorComponent,
+    ],
+    templateUrl: './join-newsletter.component.html',
+    styleUrl: './join-newsletter.component.scss'
 })
 export class JoinNewsletterComponent implements OnInit {
   public readonly subscribeButtonOptions: ButtonOptions =

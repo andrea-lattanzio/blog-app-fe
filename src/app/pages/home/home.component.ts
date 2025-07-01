@@ -7,17 +7,16 @@ import { AsyncPipe } from '@angular/common';
 import { JoinNewsletterComponent } from '../../components/join-newsletter/join-newsletter.component';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    ButtonComponent,
-    ArticleCardComponent,
-    ArticleCardSkeletonComponent,
-    AsyncPipe,
-    JoinNewsletterComponent
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+    selector: 'app-home',
+    imports: [
+        ButtonComponent,
+        ArticleCardComponent,
+        ArticleCardSkeletonComponent,
+        AsyncPipe,
+        JoinNewsletterComponent
+    ],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
   private readonly articlesSrv = inject(ArticleService);

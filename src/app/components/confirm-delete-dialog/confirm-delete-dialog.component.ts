@@ -9,11 +9,10 @@ export interface ConfirmDialogOptions {
 }
 
 @Component({
-  selector: 'app-confirm-delete-dialog',
-  standalone: true,
-  imports: [ButtonComponent],
-  templateUrl: './confirm-delete-dialog.component.html',
-  styleUrl: './confirm-delete-dialog.component.scss',
+    selector: 'app-confirm-delete-dialog',
+    imports: [ButtonComponent],
+    templateUrl: './confirm-delete-dialog.component.html',
+    styleUrl: './confirm-delete-dialog.component.scss'
 })
 export default class ConfirmDeleteDialogComponent {
   private readonly router = inject(Router);

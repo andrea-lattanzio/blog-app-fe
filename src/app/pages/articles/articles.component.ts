@@ -77,10 +77,6 @@ export class ArticlesComponent implements OnInit {
     this.articleSrv.findAll(query);
   }
 
-  handleArticleClick(articleId: string): void {
-    this.router.navigate([`article/${articleId}`]);
-  }
-
   /**
    * This componnet has onPush change detection strategy.
    * It means that it will only check for changes when:
